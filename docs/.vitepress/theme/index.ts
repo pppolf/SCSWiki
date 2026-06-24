@@ -2,6 +2,7 @@ import DefaultTheme from 'vitepress/theme';
 import type { Theme } from 'vitepress';
 import ContentMeta from './components/ContentMeta.vue';
 import HomePage from './components/HomePage.vue';
+import 'katex/dist/katex.min.css';
 import './custom.css';
 
 export default {

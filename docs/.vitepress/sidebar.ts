@@ -6,6 +6,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       text: '新生专题',
       items: [
         { text: '新生报到', link: '/start/' },
+        { text: '军训专题', link: '/start/military-training'},
         { text: '学院信息', link: '/start/info' },
         { text: '学院组织', link: '/start/org' },
         { text: '常见问题', link: '/start/faq' },

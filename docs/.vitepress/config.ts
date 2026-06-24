@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import katex from 'markdown-it-katex';
 import { nav } from './nav';
 import { sidebar } from './sidebar';
 
@@ -12,6 +13,13 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   ignoreDeadLinks: false,
+  markdown: {
+    config(md) {
+      md.use(katex, {
+        throwOnError: false,
+      });
+    },
+  },
   themeConfig: {
     nav,
     sidebar,
@@ -61,7 +69,7 @@ export default defineConfig({
       },
     },
     editLink: {
-      pattern: 'https://github.com/your-name/SCSWiki/edit/main/docs/:path',
+      pattern: 'https://github.com/pppolf/SCSWiki/edit/main/docs/:path',
       text: '在 GitHub 上编辑此页',
     },
     footer: {

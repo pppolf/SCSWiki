@@ -107,7 +107,7 @@ onMounted(async () => {
         <a class="scs-card featured" :href="withBase('/start/')">
           <span class="scs-hot-badge">Hot</span>
           <span class="scs-card-index">01</span>
-          <strong>新生专题</strong>
+          <strong>新生专题🔥</strong>
           <span>从信息核验、学习准备和常见问题开始。</span>
         </a>
         <a class="scs-card" :href="withBase('/study/')">
