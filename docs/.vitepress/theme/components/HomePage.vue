@@ -25,14 +25,7 @@ const visibleContributors = computed(() => contributors.value.slice(0, 8));
 
 onMounted(async () => {
   try {
-    const response = await fetch(
-      'https://api.github.com/repos/pppolf/SCSWiki/contributors?per_page=8',
-      {
-        headers: {
-          Accept: 'application/vnd.github+json',
-        },
-      },
-    );
+    const response = await fetch(withBase('/contributors.json'));
 
     if (!response.ok) {
       return;

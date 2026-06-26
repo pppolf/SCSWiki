@@ -15,6 +15,7 @@
     "lint:md": "markdownlint-cli2 \"**/*.md\" \"!node_modules\" \"!docs/.vitepress/cache\" \"!docs/.vitepress/dist\"",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "contributors:generate": "tsx scripts/generate-contributors.ts",
     "validate:content": "tsx scripts/validate-content.ts",
     "check:links": "tsx scripts/check-internal-links.ts",
     "test": "vitest run",
