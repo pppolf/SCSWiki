@@ -60,6 +60,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: '总览', link: '/campus/' },
         { text: '校园网络待核验模板', link: '/campus/network-template' },
+        { text: '校园网络使用指南', link: '/campus/network' },
       ],
     },
   ],
