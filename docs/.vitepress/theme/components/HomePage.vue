@@ -48,7 +48,11 @@ onMounted(async () => {
         <div class="scs-kicker">非官方 · 学生维护 · 来源优先</div>
         <h1 id="home-title">SCSWiki</h1>
         <p>
-          面向西华师范大学计算机学院学生的知识库。这里沉淀可复用的学习路径、开发工具、竞赛实践和内容核验模板，让新生、在读同学与维护者更快找到可靠起点。
+          SCSWiki
+          是一个学生维护的非官方西华师范大学计算机学院知识库，目标是把可复用的学习经验、工具入门、内容模板和贡献规范整理到一个可搜索、可审阅、可持续维护的地方，让新生、在读同学更快找到可靠起点。
+        </p>
+        <p>
+          本站不代表学校或学院立场。任何涉及政策、流程、时间、人员、联系方式、课程规则或奖助认定的信息，都必须回到学校或学院公开正式通知核验。了解更多请加入QQ群：1036399266。
         </p>
         <div class="scs-actions" aria-label="主要入口">
           <a class="scs-button primary" :href="withBase('/start/')">新生从这里开始</a>
@@ -80,11 +84,11 @@ onMounted(async () => {
       </div>
       <div>
         <strong>0 隐私泄露</strong>
-        <span>不公开个人联系方式、学号、群号和内部链接</span>
+        <span>不公开个人联系方式、学号和内部链接</span>
       </div>
       <div>
         <strong>定期复核</strong>
-        <span>页面保留核验日期、建议复核时间和维护者</span>
+        <span>页面会定期核验内容和维护者</span>
       </div>
     </section>
 

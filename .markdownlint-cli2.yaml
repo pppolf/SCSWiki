@@ -6,6 +6,7 @@ config:
     siblings_only: true
   MD033:
     allowed_elements:
+      - AutoMergeTable
       - ContentMeta
       - HomePage
       - a

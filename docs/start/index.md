@@ -21,4 +21,11 @@ sources:
 
 **可以查看[新生常见问题](/start/faq)提前了解学院和大学生活~**
 
+具体新生板块专题如下：
+
+- [军训专题](/start/jx)
+- [作息安排](/start/sh)
+- [学院信息](/start/info)
+- [学院组织](/start/org)
+
 UPD
