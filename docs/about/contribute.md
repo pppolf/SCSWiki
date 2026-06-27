@@ -304,7 +304,7 @@ maintainers:
 sources: []
 ---
 
-<ContentMeta>
+<ContentMeta />
 
 # 校园网络使用指南
 
@@ -317,6 +317,7 @@ sources: []
 ## 注意事项
 
 不要向任何人泄露账号和密码。
+
 ```
 
 请注意，在新添加了某页面，需要在 `/docs/.vitepress/sidebar.ts` 里添加对应的链接。比如现在我们是添加的 `/campus` 下的，所以我们就找对应的区域加，写上 text 和 link 就行了
