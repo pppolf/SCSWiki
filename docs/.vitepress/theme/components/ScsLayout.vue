@@ -3,6 +3,7 @@ import DefaultTheme from 'vitepress/theme';
 import { inBrowser, useRoute } from 'vitepress';
 import { nextTick, onMounted, onUnmounted, watch } from 'vue';
 import ScsCurrentPageTitle from './ScsCurrentPageTitle.vue';
+import ScsFloatingActions from './ScsFloatingActions.vue';
 
 const { Layout } = DefaultTheme;
 const route = useRoute();
@@ -80,4 +81,5 @@ watch(
       <ScsCurrentPageTitle />
     </template>
   </Layout>
+  <ScsFloatingActions />
 </template>

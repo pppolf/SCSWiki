@@ -11,6 +11,7 @@ config:
       - HomePage
       - a
       - div
+      - details
       - figure
       - h1
       - img
@@ -19,6 +20,7 @@ config:
       - section
       - span
       - strong
+      - summary
   MD041: false
 globs:
   - '**/*.md'
