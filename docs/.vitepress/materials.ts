@@ -118,7 +118,21 @@ export const courseMaterials = {
       {
         title: '试题资料',
         description: '试卷、练习题和对应答案放在同一个资料组中。',
-        resources: [],
+        resources: [
+          {
+            title: '计算机网络原理题库',
+            description: '计算机网络原理复习题库。',
+            status: '已核验',
+            files: [
+              {
+                title: '计算机网络原理题库',
+                href: '/materials/computer-network/计网题库.pdf',
+                format: 'PDF',
+                role: '题库',
+              },
+            ],
+          },
+        ],
       },
     ],
   },
