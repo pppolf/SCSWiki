@@ -206,4 +206,39 @@ export const courseMaterials = {
       },
     ],
   },
+  'computer-os': {
+    title: '计算机操作系统',
+    directory: '/materials/computer-os/',
+    categories: [
+      {
+        title: '知识点笔记',
+        description: '章节知识点、复习提纲和概念梳理。',
+        resources: [
+          {
+            title: '计算机操作系统考点重点',
+            description: '计算机操作系统考点重点资料。',
+            status: '已核验',
+            files: [
+              {
+                title: '考点重点资料',
+                href: '/materials/computer-os/操作系统考点重点.pdf',
+                format: 'PDF',
+                role: '文档',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: '实验资料',
+        description: '实验答案、实验环境、实验报告参考结构和调试记录。',
+        resources: [],
+      },
+      {
+        title: '试题资料',
+        description: '试卷、练习题和对应答案放在同一个资料组中。',
+        resources: [],
+      },
+    ],
+  },
 } satisfies Record<string, CourseMaterials>;

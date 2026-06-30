@@ -127,10 +127,10 @@ onMounted(async () => {
           <strong>党建专题</strong>
           <span>关于入党方面的问题。</span>
         </a>
-        <a class="scs-card" :href="withBase('/campus/')">
+        <a class="scs-card" :href="withBase('/materials/')">
           <span class="scs-card-index">06</span>
-          <strong>校园生活</strong>
-          <span>学校特定信息需来源核验后再发布。</span>
+          <strong>课程资料分享</strong>
+          <span>关于各期末考试科目的分享整理。</span>
         </a>
         <a class="scs-card" :href="withBase('/teacher/')">
           <span class="scs-card-index">07</span>

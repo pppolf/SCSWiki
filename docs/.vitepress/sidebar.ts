@@ -118,6 +118,7 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: '计算机网络原理', link: '/materials/computer-network' },
         { text: '数据库原理', link: '/materials/database-theory' },
         { text: '离散数学', link: '/materials/discrete-mathematics' },
+        { text: '计算机操作系统', link: '/materials/computer-os' },
       ],
     },
   ],

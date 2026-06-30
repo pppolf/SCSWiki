@@ -25,12 +25,13 @@ sources: []
 
 ## 课程资料
 
-| 课程                                               | 已整理分类          | 状态 |
-| -------------------------------------------------- | ------------------- | ---- |
-| [计算机组成原理](/materials/computer-organization) | 实验资料 / 试题资料 | 活跃 |
-| [计算机网络原理](/materials/computer-network)      | 知识点笔记          | 活跃 |
-| [数据库原理](/materials/database-theory)           | 试题资料            | 活跃 |
-| [离散数学](/materials/discrete-mathematics)        | 知识点笔记          | 活跃 |
+| 课程                                               | 已整理分类            | 状态 |
+| -------------------------------------------------- | --------------------- | ---- |
+| [计算机组成原理](/materials/computer-organization) | 实验资料 / 试题资料   | 活跃 |
+| [计算机网络原理](/materials/computer-network)      | 知识点笔记 / 试题资料 | 活跃 |
+| [数据库原理](/materials/database-theory)           | 试题资料              | 活跃 |
+| [离散数学](/materials/discrete-mathematics)        | 知识点笔记            | 活跃 |
+| [计算机操作系统](/materials/computer-os)           | 知识点笔记            | 活跃 |
 
 ## 贡献方式
 
