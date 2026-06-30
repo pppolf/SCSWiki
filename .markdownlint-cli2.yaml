@@ -9,6 +9,7 @@ config:
       - AutoMergeTable
       - ContentMeta
       - HomePage
+      - MaterialResourceList
       - a
       - div
       - details

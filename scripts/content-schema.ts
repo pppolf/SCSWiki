@@ -8,6 +8,7 @@ export const contentCategories = [
   'course',
   'development',
   'faq',
+  'materials',
   'organization',
   'party',
   'research',

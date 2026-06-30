@@ -109,6 +109,18 @@ export const sidebar: DefaultTheme.Sidebar = {
       ],
     },
   ],
+  '/materials/': [
+    {
+      text: '资料分享',
+      items: [
+        { text: '总览', link: '/materials/' },
+        { text: '计算机组成原理', link: '/materials/computer-organization' },
+        { text: '计算机网络原理', link: '/materials/computer-network' },
+        { text: '数据库原理', link: '/materials/database-theory' },
+        { text: '离散数学', link: '/materials/discrete-mathematics' },
+      ],
+    },
+  ],
   '/services/': [
     {
       text: '办事指南',

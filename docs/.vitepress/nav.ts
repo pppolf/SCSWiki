@@ -8,6 +8,7 @@ export const nav: DefaultTheme.NavItem[] = [
   { text: '学院组织', link: '/organization/', activeMatch: '^/organization/' },
   { text: '老师专栏', link: '/teacher/', activeMatch: '^/teacher/' },
   { text: '课程专栏', link: '/course/', activeMatch: '^/course/' },
+  { text: '资料分享', link: '/materials/', activeMatch: '^/materials/' },
   { text: '党建专题', link: '/party/', activeMatch: '^/party/' },
   { text: '办事指南', link: '/services/', activeMatch: '^/services/' },
   { text: '校园生活', link: '/campus/', activeMatch: '^/campus/' },

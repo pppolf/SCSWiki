@@ -17,9 +17,10 @@
     "format:check": "prettier --check .",
     "contributors:generate": "tsx scripts/generate-contributors.ts",
     "validate:content": "tsx scripts/validate-content.ts",
+    "check:materials": "tsx scripts/check-materials.ts",
     "check:links": "tsx scripts/check-internal-links.ts",
     "test": "vitest run",
-    "check": "pnpm typecheck && pnpm lint:md && pnpm format && pnpm validate:content && pnpm check:links && pnpm test && pnpm build"
+    "check": "pnpm typecheck && pnpm lint:md && pnpm format && pnpm validate:content && pnpm check:materials && pnpm check:links && pnpm test && pnpm build"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^5.2.4",
