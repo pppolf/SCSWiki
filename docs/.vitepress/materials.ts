@@ -241,4 +241,283 @@ export const courseMaterials = {
       },
     ],
   },
+  'advanced-math': {
+    title: '高等数学',
+    directory: '/materials/advanced-math/',
+    categories: [
+      {
+        title: '知识点笔记',
+        description: '章节知识点、复习提纲和概念梳理。',
+        resources: [
+          {
+            title: '高等数学复习要点',
+            description: '高等数学上下复习要点汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: '高等数学上复习要点',
+                href: '/materials/advanced-math/高等数学上复习要点.pdf',
+                format: 'PDF',
+                role: '文档',
+              },
+              {
+                title: '高等数学下复习要点',
+                href: '/materials/advanced-math/高等数学下复习要点.pdf',
+                format: 'PDF',
+                role: '文档',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: '实验资料',
+        description: '实验答案、实验环境、实验报告参考结构和调试记录。',
+        resources: [],
+      },
+      {
+        title: '试题资料',
+        description: '试卷、练习题和对应答案放在同一个资料组中。',
+        resources: [
+          {
+            title: '高等数学12级试卷',
+            description: '高等数学12级试卷汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: '高数试题A卷',
+                href: '/materials/advanced-math/12级高数试题-A.pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: '高数试题A卷答案',
+                href: '/materials/advanced-math/12级高数-A-参考答案.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+              {
+                title: '高数试题B卷',
+                href: '/materials/advanced-math/12级高数试题-B.pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  c: {
+    title: 'C语言程序设计',
+    directory: '/materials/c/',
+    categories: [
+      {
+        title: '知识点笔记',
+        description: '章节知识点、复习提纲和概念梳理。',
+        resources: [],
+      },
+      {
+        title: '实验资料',
+        description: '实验答案、实验环境、实验报告参考结构和调试记录。',
+        resources: [],
+      },
+      {
+        title: '试题资料',
+        description: '试卷、练习题和对应答案放在同一个资料组中。',
+        resources: [
+          {
+            title: 'C语言13级试卷',
+            description: 'C语言13级试卷汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: 'C语言A卷',
+                href: '/materials/c/13级C语言试卷A卷.pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: 'C语言A卷答案',
+                href: '/materials/c/13级C语言A卷答案.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+          {
+            title: 'C语言试卷1',
+            description: 'C语言试卷1汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: 'C语言试卷1',
+                href: '/materials/c/试题(A卷).pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: 'C语言试卷1答案',
+                href: '/materials/c/试题(A卷)答案及评分标准.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+          {
+            title: 'C语言试卷2',
+            description: 'C语言试卷2汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: 'C语言试卷2',
+                href: '/materials/c/试题(B卷).pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: 'C语言试卷2答案',
+                href: '/materials/c/试题(B卷)答案及评分标准.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+          {
+            title: 'C语言试卷3',
+            description: 'C语言试卷3汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: 'C语言试卷3',
+                href: '/materials/c/试题(C卷).pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: 'C语言试卷3答案',
+                href: '/materials/c/试题(C卷)答案及评分标准.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+          {
+            title: 'C语言试卷4',
+            description: 'C语言试卷4汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: 'C语言试卷4',
+                href: '/materials/c/试题(G卷).pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: 'C语言试卷4答案',
+                href: '/materials/c/试题(G卷)答案及评分标准.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+          {
+            title: 'C语言试卷5',
+            description: 'C语言试卷5汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: 'C语言试卷5',
+                href: '/materials/c/试题(H卷).pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: 'C语言试卷5答案',
+                href: '/materials/c/试题(H卷)答案及评分标准.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+          {
+            title: 'C语言试卷6',
+            description: 'C语言试卷6汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: 'C语言试卷6',
+                href: '/materials/c/试题(I卷).pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: 'C语言试卷6答案',
+                href: '/materials/c/试题(I卷)答案与评分标准.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+          {
+            title: 'C语言试卷7',
+            description: 'C语言试卷7汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: 'C语言试卷7',
+                href: '/materials/c/试题(K卷).pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: 'C语言试卷7答案',
+                href: '/materials/c/试题(K卷)答案及评分标准.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+          {
+            title: 'C语言试卷8',
+            description: 'C语言试卷8汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: 'C语言试卷8',
+                href: '/materials/c/试题(M卷).pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: 'C语言试卷8答案',
+                href: '/materials/c/试题(M卷)答案及评分标准.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+          {
+            title: 'C语言试卷9',
+            description: 'C语言试卷9汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: 'C语言试卷9',
+                href: '/materials/c/试题(N卷).pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: 'C语言试卷9答案',
+                href: '/materials/c/试题(N卷)答案及评分标准.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 } satisfies Record<string, CourseMaterials>;

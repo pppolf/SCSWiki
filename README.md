@@ -1,3 +1,5 @@
+<div align="center">
+
 # SCSWiki
 
 面向西华师范大学计算机学院学生的非官方知识库。
@@ -6,6 +8,8 @@
 [![Deploy Pages](https://github.com/pppolf/SCSWiki/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/pppolf/SCSWiki/actions/workflows/deploy-pages.yml)
 [![License: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](./LICENSE)
 [![Content: CC BY-SA 4.0](https://img.shields.io/badge/Content-CC%20BY--SA%204.0-green.svg)](./LICENSE-CONTENT)
+
+</div>
 
 **线上访问：** [scswiki.com](https://scswiki.com/)
 
