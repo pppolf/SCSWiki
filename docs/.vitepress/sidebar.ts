@@ -121,6 +121,8 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: '计算机操作系统', link: '/materials/computer-os' },
         { text: '高等数学', link: '/materials/advanced-math' },
         { text: 'C语言程序设计', link: '/materials/c' },
+        { text: '软件过程项目管理', link: '/materials/software' },
+        { text: '大学物理', link: '/materials/physics' },
       ],
     },
   ],

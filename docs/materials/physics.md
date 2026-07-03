@@ -1,6 +1,6 @@
 ---
-title: C语言程序设计资料
-description: C语言程序设计课程相关学习资料整理
+title: 大学物理资料
+description: 大学物理课程相关学习资料整理
 category: materials
 audience:
   - 学生
@@ -13,21 +13,21 @@ sources: []
 
 <ContentMeta />
 
-# C语言程序设计资料
+# 大学物理资料
 
-本页用于整理C语言程序设计课程的学习资料。资料内容以同学贡献为主，仅供学习参考；课程范围、实验要求、作业要求和考试安排请以任课教师当学期说明为准。
+本页用于整理大学物理课程的学习资料。资料内容以同学贡献为主，仅供学习参考；课程范围、实验要求、作业要求和考试安排请以任课教师当学期说明为准。
 
 ## 资料目录
 
-<MaterialResourceList course="c" />
+<MaterialResourceList course="physics" />
 
 ## 维护方式
 
 每门课程使用一页内容和一个附件目录：
 
 ```text
-docs/materials/c.md
-docs/public/materials/c/
+docs/materials/physics.md
+docs/public/materials/physics/
 ```
 
 资料清单统一维护在：

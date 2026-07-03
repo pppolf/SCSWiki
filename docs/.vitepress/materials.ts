@@ -202,7 +202,66 @@ export const courseMaterials = {
       {
         title: '试题资料',
         description: '试卷、练习题和对应答案放在同一个资料组中。',
-        resources: [],
+        resources: [
+          {
+            title: '2012级离散数学A卷',
+            description: '2012级离散数学A卷汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: '复习题',
+                href: '/materials/discrete-mathematics/2012级离散数学A卷.pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+            ],
+          },
+          {
+            title: '2013级离散数学A卷',
+            description: '2013级离散数学A卷试题汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: '2013级离散数学A卷',
+                href: '/materials/discrete-mathematics/2013级离散数学A卷.pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: '2013级离散数学A卷答案',
+                href: '/materials/discrete-mathematics/2013级离散数学A卷参考答案及计分标准.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+          {
+            title: '离散数学2019-2020学年第一学期期末试卷',
+            description: '离散数学2019-2020学年第一学期期末试卷汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: '期末试卷',
+                href: '/materials/discrete-mathematics/离散数学2019-2020学年第一学期期末试卷.pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+            ],
+          },
+          {
+            title: '2021秋离散数学复习题',
+            description: '2021秋离散数学复习题汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: '复习题',
+                href: '/materials/discrete-mathematics/2021秋离散数学复习题.pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+            ],
+          },
+        ],
       },
     ],
   },
@@ -549,6 +608,94 @@ export const courseMaterials = {
               {
                 title: 'C语言试卷9答案',
                 href: '/materials/c/试题(N卷)答案及评分标准.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  software: {
+    title: '软件过程项目管理',
+    directory: '/materials/software/',
+    categories: [
+      {
+        title: '知识点笔记',
+        description: '章节知识点、复习提纲和概念梳理。',
+        resources: [
+          {
+            title: '软件过程项目管理复习要点',
+            description: '软件过程项目管理复习要点汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: '软件过程项目管理',
+                href: '/materials/software/软件工程.pdf',
+                format: 'PDF',
+                role: '文档',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: '实验资料',
+        description: '实验答案、实验环境、实验报告参考结构和调试记录。',
+        resources: [],
+      },
+      {
+        title: '试题资料',
+        description: '试卷、练习题和对应答案放在同一个资料组中。',
+        resources: [],
+      },
+    ],
+  },
+  physics: {
+    title: '大学物理',
+    directory: '/materials/physics/',
+    categories: [
+      {
+        title: '知识点笔记',
+        description: '章节知识点、复习提纲和概念梳理。',
+        resources: [],
+      },
+      {
+        title: '实验资料',
+        description: '实验答案、实验环境、实验报告参考结构和调试记录。',
+        resources: [],
+      },
+      {
+        title: '试题资料',
+        description: '试卷、练习题和对应答案放在同一个资料组中。',
+        resources: [
+          {
+            title: '大学物理练习题',
+            description: '大学物理练习题汇总，题册+答案',
+            status: '已核验',
+            files: [
+              {
+                title: '大学物理上册练习题',
+                href: '/materials/physics/大学物理习题集上册.pdf',
+                format: 'PDF',
+                role: '练习题',
+              },
+              {
+                title: '大学物理上册练习题（答案）',
+                href: '/materials/physics/大学物理习题集上册_详细答案.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+              {
+                title: '大学物理下册练习题',
+                href: '/materials/physics/大学物理习题集下册.pdf',
+                format: 'PDF',
+                role: '练习题',
+              },
+              {
+                title: '大学物理下册练习题（答案）',
+                href: '/materials/physics/大学物理习题集下册_详细答案.pdf',
                 format: 'PDF',
                 role: '答案',
               },
