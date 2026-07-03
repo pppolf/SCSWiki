@@ -304,6 +304,44 @@ export const courseMaterials = {
               },
             ],
           },
+          {
+            title: '高等数学A下册练习题',
+            description: '高等数学A下册练习题汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: '高数A下册练习题',
+                href: '/materials/advanced-math/高数A下册练习题.pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: '高数A下册答案',
+                href: '/materials/advanced-math/高数A下册练习题(含答案).pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
+          {
+            title: '高等数学A练习试卷',
+            description: '高等数学A练习试卷。',
+            status: '已核验',
+            files: [
+              {
+                title: '练习试卷',
+                href: '/materials/advanced-math/高数A下练习试卷.pdf',
+                format: 'PDF',
+                role: '试卷',
+              },
+              {
+                title: '练习答案',
+                href: '/materials/advanced-math/高数A下练习试卷_参考答案与详细解析.pdf',
+                format: 'PDF',
+                role: '答案',
+              },
+            ],
+          },
         ],
       },
     ],
