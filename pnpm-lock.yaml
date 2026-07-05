@@ -11,6 +11,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.2.4
         version: 5.2.4(vite@5.4.21(@types/node@22.20.0))(vue@3.5.38(typescript@5.9.3))
+      markdown-it:
+        specifier: ^14.3.0
+        version: 14.3.0
       vitepress:
         specifier: ^1.6.4
         version: 1.6.4(@algolia/client-search@5.55.0)(@types/node@22.20.0)(markdown-it-mathjax3@4.3.2)(postcss@8.5.15)(search-insights@2.17.3)(typescript@5.9.3)
@@ -1126,6 +1129,9 @@ packages:
   linkify-it@5.0.1:
     resolution: {integrity: sha512-wVoTjP4Q6R0NW5hiZkVJaFZPWgtXfoGF+6LucL3/FtiNjmcHhYjEr5f1Kqjirc1nBW07J/ZuRFumqr2oqccEWg==, tarball: https://registry.npmmirror.com/linkify-it/-/linkify-it-5.0.1.tgz}
 
+  linkify-it@5.0.2:
+    resolution: {integrity: sha512-ONTm2jCMAVZjgQa/Fy1kScXsuOoF5NPTsoFBdE1KVIZ2vAh/r9+Bqo+0jINCBYnavTPQZz38QzFTme79ENoN3Q==, tarball: https://registry.npmmirror.com/linkify-it/-/linkify-it-5.0.2.tgz}
+
   loupe@3.2.1:
     resolution: {integrity: sha512-CdzqowRJCeLU72bHvWqwRBBlLcMEtIvGrlvef74kMnV2AolS9Y8xUv1I0U/MNAWMhBlKIoyuEgoJ0t/bbwHbLQ==, tarball: https://registry.npmmirror.com/loupe/-/loupe-3.2.1.tgz}
 
@@ -1143,6 +1149,10 @@ packages:
 
   markdown-it@14.1.0:
     resolution: {integrity: sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==, tarball: https://registry.npmmirror.com/markdown-it/-/markdown-it-14.1.0.tgz}
+    hasBin: true
+
+  markdown-it@14.3.0:
+    resolution: {integrity: sha512-RCEsPjR+sr0x+AuYp601tKTkgFG4YEPLCzHST3cQ/fhlJkqAkz1L2/Qbp1j9qw5SBwQHFBoW8+hoN5xssOF0Tw==, tarball: https://registry.npmmirror.com/markdown-it/-/markdown-it-14.3.0.tgz}
     hasBin: true
 
   markdownlint-cli2-formatter-default@0.0.5:
@@ -2616,6 +2626,10 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
+  linkify-it@5.0.2:
+    dependencies:
+      uc.micro: 2.1.0
+
   loupe@3.2.1: {}
 
   magic-string@0.30.21:
@@ -2641,6 +2655,15 @@ snapshots:
       argparse: 2.0.1
       entities: 4.5.0
       linkify-it: 5.0.1
+      mdurl: 2.0.0
+      punycode.js: 2.3.1
+      uc.micro: 2.1.0
+
+  markdown-it@14.3.0:
+    dependencies:
+      argparse: 2.0.1
+      entities: 4.5.0
+      linkify-it: 5.0.2
       mdurl: 2.0.0
       punycode.js: 2.3.1
       uc.micro: 2.1.0

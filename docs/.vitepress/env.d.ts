@@ -6,3 +6,11 @@ declare module '*.vue' {
 }
 
 declare module 'markdown-it-katex';
+
+interface ImportMetaEnv {
+  readonly VITE_SCS_ASSISTANT_API_BASE?: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}

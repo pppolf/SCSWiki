@@ -38,6 +38,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Check
         run: pnpm check
+        env:
+          VITE_SCS_ASSISTANT_API_BASE: https://api.scswiki.com
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

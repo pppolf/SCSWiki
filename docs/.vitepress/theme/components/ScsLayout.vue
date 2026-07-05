@@ -2,6 +2,7 @@
 import DefaultTheme from 'vitepress/theme';
 import { inBrowser, useRoute } from 'vitepress';
 import { nextTick, onMounted, onUnmounted, watch } from 'vue';
+import ScsAssistant from './ScsAssistant.vue';
 import ScsCurrentPageTitle from './ScsCurrentPageTitle.vue';
 import ScsFloatingActions from './ScsFloatingActions.vue';
 
@@ -81,5 +82,6 @@ watch(
       <ScsCurrentPageTitle />
     </template>
   </Layout>
+  <ScsAssistant />
   <ScsFloatingActions />
 </template>

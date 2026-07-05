@@ -1,15 +1,21 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vitepress';
 import katex from 'markdown-it-katex';
 import { nav } from './nav';
 import { sidebar } from './sidebar';
 
 const base = process.env.VITEPRESS_BASE ?? '/';
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
 export default defineConfig({
   title: 'SCSWiki',
   description: '西华师范大学计算机学院学生知识库（非官方）',
   lang: 'zh-CN',
   base,
+  vite: {
+    envDir: repoRoot,
+  },
   cleanUrls: true,
   head: [['link', { href: '/logo.svg', rel: 'icon', type: 'image/svg+xml' }]],
   lastUpdated: true,

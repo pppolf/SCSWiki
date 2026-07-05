@@ -5,6 +5,8 @@ dist/
 docs/.vitepress/cache/
 docs/.vitepress/dist/
 .vitepress-dev*.log
+*.log
+assistant-data/
 .env
 .env.*
 !.env.example

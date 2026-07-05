@@ -13,5 +13,10 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.vue", "scripts/**/*.ts"]
+  "include": [
+    "assistant-api/src/**/*.ts",
+    "docs/.vitepress/**/*.ts",
+    "docs/.vitepress/**/*.vue",
+    "scripts/**/*.ts"
+  ]
 }
