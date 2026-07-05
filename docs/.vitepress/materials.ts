@@ -401,6 +401,25 @@ export const courseMaterials = {
               },
             ],
           },
+          {
+            title: '高等数学A下册综合练习',
+            description: '高等数学A下册综合练习汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: '高数下册综合练习1',
+                href: '/materials/advanced-math/高数下册综合练习1.pdf',
+                format: 'PDF',
+                role: '练习',
+              },
+              {
+                title: '高数下册综合练习2',
+                href: '/materials/advanced-math/高数下册综合练习2.pdf',
+                format: 'PDF',
+                role: '练习',
+              },
+            ],
+          },
         ],
       },
     ],
