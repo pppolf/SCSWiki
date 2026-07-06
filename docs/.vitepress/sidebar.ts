@@ -123,6 +123,7 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: 'C语言程序设计', link: '/materials/c' },
         { text: '软件过程项目管理', link: '/materials/software' },
         { text: '大学物理', link: '/materials/physics' },
+        { text: '线性代数', link: '/materials/linear-algebra' },
       ],
     },
   ],

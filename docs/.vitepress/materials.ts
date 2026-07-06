@@ -724,4 +724,69 @@ export const courseMaterials = {
       },
     ],
   },
+  'linear-algebra': {
+    title: '大学物理',
+    directory: '/materials/linear-algebra/',
+    categories: [
+      {
+        title: '知识点笔记',
+        description: '章节知识点、复习提纲和概念梳理。',
+        resources: [],
+      },
+      {
+        title: '实验资料',
+        description: '实验答案、实验环境、实验报告参考结构和调试记录。',
+        resources: [],
+      },
+      {
+        title: '试题资料',
+        description: '试卷、练习题和对应答案放在同一个资料组中。',
+        resources: [
+          {
+            title: '2025级线性代数期末复习大题',
+            description: '2025级线性代数期末复习大题汇总',
+            status: '已核验',
+            files: [
+              {
+                title: '线代-同济-行列式',
+                href: '/materials/linear-algebra/线代-同济-行列式.pdf',
+                format: 'PDF',
+                role: '课后习题',
+              },
+              {
+                title: '线性代数-课-71页',
+                href: '/materials/linear-algebra/线性代数-课-71页.pdf',
+                format: 'PDF',
+                role: '课后习题',
+              },
+              {
+                title: '线性代数-课-163页',
+                href: '/materials/linear-algebra/线性代数-课-163页.pdf',
+                format: 'PDF',
+                role: '课后习题',
+              },
+              {
+                title: '线性代数-课-177页',
+                href: '/materials/linear-algebra/线性代数-课-177页.pdf',
+                format: 'PDF',
+                role: '课后习题',
+              },
+              {
+                title: '线性代数-课-188页',
+                href: '/materials/linear-algebra/线性代数-课-188页.pdf',
+                format: 'PDF',
+                role: '课后习题',
+              },
+              {
+                title: '线性代数-课-193页',
+                href: '/materials/linear-algebra/线性代数-课-193页.pdf',
+                format: 'PDF',
+                role: '课后习题',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 } satisfies Record<string, CourseMaterials>;
