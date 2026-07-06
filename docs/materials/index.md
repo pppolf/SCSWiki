@@ -37,6 +37,7 @@ sources: []
 | [软件过程项目管理](/materials/software)            | 知识点笔记            | 活跃 |
 | [大学物理](/materials/physics)                     | 试题资料              | 活跃 |
 | [线性代数](/materials/linear-algebra)              | 试题资料              | 活跃 |
+| [Java Web应用开发](/materials/javaweb)             | 知识点笔记            | 活跃 |
 
 ## 贡献方式
 

@@ -789,4 +789,57 @@ export const courseMaterials = {
       },
     ],
   },
+  javaweb: {
+    title: 'Java Web应用开发',
+    directory: '/materials/javaweb/',
+    categories: [
+      {
+        title: '知识点笔记',
+        description: '章节知识点、复习提纲和概念梳理。',
+        resources: [
+          {
+            title: '2024级JavaWeb期末复习资料',
+            description: '2024级JavaWeb期末复习资料汇总',
+            status: '已核验',
+            files: [
+              {
+                title: 'JavaWeb1-12章大题预测与答题模板',
+                href: '/materials/javaweb/JavaWeb1-12章大题预测与答题模板.pdf',
+                format: 'PDF',
+                role: '文档',
+              },
+              {
+                title: 'JavaWeb期末开卷知识点清单',
+                href: '/materials/javaweb/JavaWeb期末开卷知识点清单.pdf',
+                format: 'PDF',
+                role: '文档',
+              },
+              {
+                title: 'JavaWeb前12章课后习题答案整合',
+                href: '/materials/javaweb/JavaWeb前12章课后习题答案整合.pdf',
+                format: 'PDF',
+                role: '文档',
+              },
+              {
+                title: 'JavaWeb全课程知识点清单',
+                href: '/materials/javaweb/JavaWeb全课程知识点清单.pdf',
+                format: 'PDF',
+                role: '文档',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: '实验资料',
+        description: '实验答案、实验环境、实验报告参考结构和调试记录。',
+        resources: [],
+      },
+      {
+        title: '试题资料',
+        description: '试卷、练习题和对应答案放在同一个资料组中。',
+        resources: [],
+      },
+    ],
+  },
 } satisfies Record<string, CourseMaterials>;
