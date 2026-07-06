@@ -420,6 +420,19 @@ export const courseMaterials = {
               },
             ],
           },
+          {
+            title: '高等数学期末模拟练习',
+            description: '高等数学期末模拟练习汇总。',
+            status: '已核验',
+            files: [
+              {
+                title: '高等数学期末模拟练习',
+                href: '/materials/advanced-math/高等数学期末模拟练习.pdf',
+                format: 'PDF',
+                role: '练习',
+              },
+            ],
+          },
         ],
       },
     ],
