@@ -855,4 +855,149 @@ export const courseMaterials = {
       },
     ],
   },
+  xjp: {
+    title: '习近平新时代中国特色社会主义思想',
+    directory: '/materials/xjp/',
+    categories: [
+      {
+        title: '知识点笔记',
+        description: '章节笔记、复习提纲和知识点清单。',
+        resources: [
+          {
+            title: '习近平新时代中国特色社会主义思想章节知识点',
+            description: '按章节整理的课程知识点 PDF，共 17 份。',
+            status: '已授权公开',
+            files: [
+              {
+                title: '第一章',
+                href: '/materials/xjp/chapter-01.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第二章',
+                href: '/materials/xjp/chapter-02.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第三章',
+                href: '/materials/xjp/chapter-03.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第四章',
+                href: '/materials/xjp/chapter-04.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第五章',
+                href: '/materials/xjp/chapter-05.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第六章',
+                href: '/materials/xjp/chapter-06.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第七章',
+                href: '/materials/xjp/chapter-07.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第八章',
+                href: '/materials/xjp/chapter-08.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第九章',
+                href: '/materials/xjp/chapter-09.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第十章',
+                href: '/materials/xjp/chapter-10.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第十一章',
+                href: '/materials/xjp/chapter-11.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第十二章',
+                href: '/materials/xjp/chapter-12.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第十三章',
+                href: '/materials/xjp/chapter-13.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第十四章',
+                href: '/materials/xjp/chapter-14.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第十五章',
+                href: '/materials/xjp/chapter-15.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第十六章',
+                href: '/materials/xjp/chapter-16.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+              {
+                title: '第十七章',
+                href: '/materials/xjp/chapter-17.pdf',
+                format: 'PDF',
+                role: '章节资料',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: '实验资料',
+        description: '实验答案、实验环境、实验报告参考结构和调试记录。',
+        resources: [],
+      },
+      {
+        title: '试题资料',
+        description: '试卷、练习题和对应答案放在同一个资料组中。',
+        resources: [
+          {
+            title: '习近平新时代中国特色社会主义思想期末练习题',
+            description: '课程期末练习题 PDF。',
+            status: '已授权公开',
+            files: [
+              {
+                title: '期末练习题',
+                href: '/materials/xjp/final-practice.pdf',
+                format: 'PDF',
+                role: '练习题',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 } satisfies Record<string, CourseMaterials>;

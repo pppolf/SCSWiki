@@ -2206,3 +2206,37 @@
     grid-template-columns: 1fr;
   }
 }
+
+.program-summary-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 18px 0 24px;
+}
+
+.program-summary-card {
+  background: var(--scs-soft-bg);
+  border: 1px solid var(--scs-line);
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.program-summary-card strong {
+  color: var(--scs-text);
+  display: block;
+  font-size: 26px;
+  line-height: 1.15;
+}
+
+.program-summary-card span {
+  color: var(--scs-muted);
+  display: block;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+@media (max-width: 720px) {
+  .program-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
