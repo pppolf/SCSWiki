@@ -1054,6 +1054,10 @@
   font-size: 14px;
 }
 
+.content-meta__item--sources {
+  grid-column: 1 / -1;
+}
+
 .content-meta__item strong {
   color: var(--scs-text);
   display: block;
@@ -1063,6 +1067,7 @@
 .content-meta__item a {
   display: inline-block;
   margin-right: 10px;
+  max-width: 100%;
 }
 
 .content-meta__warning {

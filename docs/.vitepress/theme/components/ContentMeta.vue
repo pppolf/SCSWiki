@@ -89,7 +89,7 @@ const isExperience = computed(() => contentType.value === 'experience');
         <strong>维护者</strong>
         {{ maintainers }}
       </div>
-      <div class="content-meta__item">
+      <div class="content-meta__item content-meta__item--sources">
         <strong>来源</strong>
         <template v-if="sources.length > 0">
           <a

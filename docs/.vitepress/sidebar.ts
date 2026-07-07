@@ -92,8 +92,9 @@ export const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: '总览', link: '/teacher/' },
         { text: '教研室', link: '/teacher/jys' },
-        { text: '辅导员', link: '/teacher/fdy' },
+        { text: '学工团队', link: '/teacher/xgtd' },
         { text: '硕士生导师', link: '/teacher/ssds' },
+        { text: '办公室/实验室', link: '/teacher/sys' },
         { text: '公共课', link: '/teacher/ggk' },
       ],
     },
@@ -134,7 +135,8 @@ export const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: '总览', link: '/services/' },
         { text: '奖助学金', link: '/services/scholarship' },
-        { text: '保研', link: '/services/postgraduate' },
+        { text: '保研（推荐免试研究生）', link: '/services/postgraduate' },
+        { text: '卓越班', link: '/services/zyb' },
       ],
     },
   ],

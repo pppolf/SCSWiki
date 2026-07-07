@@ -2,6 +2,7 @@ import DefaultTheme from 'vitepress/theme';
 import type { Theme } from 'vitepress';
 import AutoMergeTable from './components/AutoMergeTable.vue';
 import ContentMeta from './components/ContentMeta.vue';
+import ElectiveCourseTable from './components/ElectiveCourseTable.vue';
 import HomePage from './components/HomePage.vue';
 import MaterialResourceList from './components/MaterialResourceList.vue';
 import ScsLayout from './components/ScsLayout.vue';
@@ -14,6 +15,7 @@ export default {
   enhanceApp({ app }) {
     app.component('AutoMergeTable', AutoMergeTable);
     app.component('ContentMeta', ContentMeta);
+    app.component('ElectiveCourseTable', ElectiveCourseTable);
     app.component('HomePage', HomePage);
     app.component('MaterialResourceList', MaterialResourceList);
   },

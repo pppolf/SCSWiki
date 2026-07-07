@@ -4,8 +4,8 @@ description: 办事流程类内容的待核验入口
 category: services
 audience:
   - 本科生
-content_type: official-source
-status: needs-review
+content_type: verified
+status: active
 maintainers:
   - SCSWiki 维护组
 sources: []

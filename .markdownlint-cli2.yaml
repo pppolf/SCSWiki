@@ -8,6 +8,7 @@ config:
     allowed_elements:
       - AutoMergeTable
       - ContentMeta
+      - ElectiveCourseTable
       - HomePage
       - MaterialResourceList
       - a
