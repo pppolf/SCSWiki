@@ -17,7 +17,9 @@ export type EmbeddingClientOptions = {
   dimensions: number;
   endpoint: string;
   fetchImpl?: FetchLike;
+  maxRetries?: number;
   model: string;
+  timeoutMs?: number;
 };
 
 type ChatCompletionResponse = {
@@ -139,6 +141,8 @@ export function createChatCompletionClient(options: ChatClientOptions) {
 export function createEmbeddingClient(options: EmbeddingClientOptions) {
   const fetchImpl = options.fetchImpl ?? fetch;
   const batchSize = Math.max(1, options.batchSize);
+  const maxRetries = Math.max(0, options.maxRetries ?? 0);
+  const timeoutMs = options.timeoutMs ?? 30_000;
 
   async function embed(input: string) {
     const [embedding] = await embedBatch([input]);
@@ -159,16 +163,24 @@ export function createEmbeddingClient(options: EmbeddingClientOptions) {
       throw new Error(`Embedding batch cannot exceed ${batchSize} inputs.`);
     }
 
-    const response = await requestWithTimeout(fetchImpl, options.endpoint, {
-      body: JSON.stringify({
-        dimensions: options.dimensions,
-        encoding_format: 'float',
-        input: inputs,
-        model: options.model,
-      }),
-      headers: buildJsonHeaders(options.apiKey, 'SCS_ASSISTANT_EMBEDDING_API_KEY'),
-      method: 'POST',
-    });
+    const response = await requestEmbeddingWithRetry(
+      fetchImpl,
+      options.endpoint,
+      {
+        body: JSON.stringify({
+          dimensions: options.dimensions,
+          encoding_format: 'float',
+          input: inputs,
+          model: options.model,
+        }),
+        headers: buildJsonHeaders(options.apiKey, 'SCS_ASSISTANT_EMBEDDING_API_KEY'),
+        method: 'POST',
+      },
+      {
+        maxRetries,
+        timeoutMs,
+      },
+    );
 
     if (!response.ok) {
       const body = await response.text();
@@ -279,6 +291,53 @@ async function requestWithTimeout(
   } finally {
     clearTimeout(timer);
   }
+}
+
+async function requestEmbeddingWithRetry(
+  fetchImpl: FetchLike,
+  url: string,
+  init: RequestInit,
+  options: { maxRetries: number; timeoutMs: number },
+) {
+  for (let attempt = 0; attempt <= options.maxRetries; attempt += 1) {
+    try {
+      const response = await requestWithTimeout(fetchImpl, url, init, options.timeoutMs);
+
+      if (response.ok || !isRetryableStatus(response.status) || attempt >= options.maxRetries) {
+        return response;
+      }
+    } catch (error) {
+      if (!isRetryableRequestError(error) || attempt >= options.maxRetries) {
+        throw error;
+      }
+    }
+
+    await wait(retryDelayMs(attempt));
+  }
+
+  throw new Error('Embedding request failed after retries.');
+}
+
+function isRetryableStatus(status: number) {
+  return status === 429 || status >= 500;
+}
+
+function isRetryableRequestError(error: unknown) {
+  if (!(error instanceof Error)) {
+    return false;
+  }
+
+  return error.name === 'AbortError' || error.name === 'TimeoutError' || error.name === 'TypeError';
+}
+
+function retryDelayMs(attempt: number) {
+  return Math.min(1_000 * 2 ** attempt, 8_000);
+}
+
+async function wait(ms: number) {
+  await new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 }
 
 function buildJsonHeaders(apiKey: string, envName: string) {

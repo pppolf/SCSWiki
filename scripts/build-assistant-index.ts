@@ -14,6 +14,14 @@ const embeddingModel = process.env.SCS_ASSISTANT_EMBEDDING_MODEL ?? 'text-embedd
 const embeddingApiKey = process.env.SCS_ASSISTANT_EMBEDDING_API_KEY ?? '';
 const embeddingDimensions = readNumberEnv('SCS_ASSISTANT_EMBEDDING_DIMENSIONS', 1024);
 const embeddingBatchSize = Math.min(readNumberEnv('SCS_ASSISTANT_EMBEDDING_BATCH_SIZE', 10), 10);
+const embeddingTimeoutMs = readNumberEnv(
+  'SCS_ASSISTANT_INDEX_EMBEDDING_TIMEOUT_MS',
+  readNumberEnv('SCS_ASSISTANT_EMBEDDING_TIMEOUT_MS', 120_000),
+);
+const embeddingRetries = readNonNegativeNumberEnv(
+  'SCS_ASSISTANT_INDEX_EMBEDDING_RETRIES',
+  readNonNegativeNumberEnv('SCS_ASSISTANT_EMBEDDING_RETRIES', 3),
+);
 const outputPath = path.resolve(
   process.env.SCS_ASSISTANT_INDEX_OUT ??
     process.env.SCS_ASSISTANT_INDEX_PATH ??
@@ -24,7 +32,9 @@ const embeddingClient = createEmbeddingClient({
   batchSize: embeddingBatchSize,
   dimensions: embeddingDimensions,
   endpoint: embeddingEndpoint,
+  maxRetries: embeddingRetries,
   model: embeddingModel,
+  timeoutMs: embeddingTimeoutMs,
 });
 
 async function main() {
@@ -71,6 +81,11 @@ async function main() {
 function readNumberEnv(name: string, fallback: number) {
   const value = Number(process.env[name]);
   return Number.isFinite(value) && value > 0 ? value : fallback;
+}
+
+function readNonNegativeNumberEnv(name: string, fallback: number) {
+  const value = Number(process.env[name]);
+  return Number.isInteger(value) && value >= 0 ? value : fallback;
 }
 
 await main();

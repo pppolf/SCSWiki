@@ -23,6 +23,11 @@ SCS_ASSISTANT_EMBEDDING_URL=https://dashscope.aliyuncs.com/compatible-mode/v1/em
 SCS_ASSISTANT_EMBEDDING_MODEL=text-embedding-v4
 SCS_ASSISTANT_EMBEDDING_API_KEY=...
 SCS_ASSISTANT_EMBEDDING_DIMENSIONS=1024
+SCS_ASSISTANT_EMBEDDING_BATCH_SIZE=10
+SCS_ASSISTANT_EMBEDDING_TIMEOUT_MS=30000
+SCS_ASSISTANT_EMBEDDING_RETRIES=1
+SCS_ASSISTANT_INDEX_EMBEDDING_TIMEOUT_MS=120000
+SCS_ASSISTANT_INDEX_EMBEDDING_RETRIES=3
 SCS_ASSISTANT_INDEX_PATH=assistant-data/scswiki-rag-index.json
 SCS_ASSISTANT_PORT=8787
 SCS_ASSISTANT_ALLOWED_ORIGINS=https://scswiki.com,https://www.scswiki.com,http://localhost:5173
@@ -46,6 +51,17 @@ assistant-data/scswiki-rag-index.json
 ```
 
 API 会热加载索引文件。如果索引的 `embeddingModel` 或 `embeddingDimensions` 与当前环境变量不一致，`/health` 会显示错误，聊天接口会返回 503。
+
+如果生成索引时出现 `AbortError: This operation was aborted`，通常是 embedding 请求超时，不是内容被敏感词拦截。可以先降低批量并延长索引超时：
+
+```bash
+export SCS_ASSISTANT_EMBEDDING_BATCH_SIZE=1
+export SCS_ASSISTANT_INDEX_EMBEDDING_TIMEOUT_MS=180000
+export SCS_ASSISTANT_INDEX_EMBEDDING_RETRIES=5
+pnpm assistant:index
+```
+
+如果是平台内容审核或鉴权问题，通常会返回 4xx 状态码和错误正文，而不是 `AbortError`。
 
 ## 本地启动
 

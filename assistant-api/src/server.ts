@@ -36,6 +36,8 @@ const embeddingModel = process.env.SCS_ASSISTANT_EMBEDDING_MODEL ?? 'text-embedd
 const embeddingApiKey = process.env.SCS_ASSISTANT_EMBEDDING_API_KEY ?? '';
 const embeddingDimensions = readNumberEnv('SCS_ASSISTANT_EMBEDDING_DIMENSIONS', 1024);
 const embeddingBatchSize = readNumberEnv('SCS_ASSISTANT_EMBEDDING_BATCH_SIZE', 10);
+const embeddingTimeoutMs = readNumberEnv('SCS_ASSISTANT_EMBEDDING_TIMEOUT_MS', 30_000);
+const embeddingRetries = readNonNegativeNumberEnv('SCS_ASSISTANT_EMBEDDING_RETRIES', 1);
 const indexPath = path.resolve(
   process.env.SCS_ASSISTANT_INDEX_PATH ?? 'assistant-data/scswiki-rag-index.json',
 );
@@ -69,7 +71,9 @@ const embeddingClient = createEmbeddingClient({
   batchSize: embeddingBatchSize,
   dimensions: embeddingDimensions,
   endpoint: embeddingEndpoint,
+  maxRetries: embeddingRetries,
   model: embeddingModel,
+  timeoutMs: embeddingTimeoutMs,
 });
 
 await loadIndex();
@@ -484,6 +488,11 @@ function sanitizeStreamDelta(delta: string) {
 function readNumberEnv(name: string, fallback: number) {
   const value = Number(process.env[name]);
   return Number.isFinite(value) && value > 0 ? value : fallback;
+}
+
+function readNonNegativeNumberEnv(name: string, fallback: number) {
+  const value = Number(process.env[name]);
+  return Number.isInteger(value) && value >= 0 ? value : fallback;
 }
 
 function getBodyProperty(body: unknown, key: string) {

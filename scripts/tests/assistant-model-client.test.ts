@@ -130,4 +130,39 @@ describe('assistant model clients', () => {
       model: 'text-embedding-v4',
     });
   });
+
+  it('retries embedding requests after abort errors', async () => {
+    let calls = 0;
+    const fetchImpl: FetchLike = async () => {
+      calls += 1;
+
+      if (calls === 1) {
+        throw new DOMException('request timed out', 'AbortError');
+      }
+
+      return new Response(
+        JSON.stringify({
+          data: [{ embedding: makeVector(1), index: 0 }],
+        }),
+        {
+          headers: { 'content-type': 'application/json' },
+        },
+      );
+    };
+    const client = createEmbeddingClient({
+      apiKey: 'embedding-key',
+      batchSize: 10,
+      dimensions: 1024,
+      endpoint: 'https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings',
+      fetchImpl,
+      maxRetries: 1,
+      model: 'text-embedding-v4',
+      timeoutMs: 1,
+    });
+
+    const embeddings = await client.embedBatch(['测试']);
+
+    expect(calls).toBe(2);
+    expect(embeddings[0]).toHaveLength(1024);
+  });
 });
