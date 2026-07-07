@@ -110,3 +110,27 @@ curl https://api.scswiki.com/health
 ```
 
 公网只需要开放 80/443。`8787` 只监听 `127.0.0.1`，由 Caddy 反代。
+
+## 更新部署
+
+以后在云服务器拉取新代码后，直接运行：
+
+```bash
+cd /srv/SCSWiki
+git pull
+bash deploy/update-assistant.sh
+```
+
+这个脚本会安装依赖、加载 `/etc/scswiki-assistant.env`、重建 `text-embedding-v4` 索引、重启 PM2，并校验本机 `/health`。
+
+如果只是改了后端代码，不想重建索引和消耗 embedding API，可以运行：
+
+```bash
+bash deploy/update-assistant.sh --skip-index
+```
+
+如果服务器已经确认依赖没变，也可以跳过安装：
+
+```bash
+bash deploy/update-assistant.sh --skip-install
+```
