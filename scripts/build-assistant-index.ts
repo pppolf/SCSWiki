@@ -1,68 +1,62 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { buildAssistantChunks, type AssistantIndex } from './assistant-index';
+import {
+  buildAssistantChunks,
+  type AssistantIndex,
+  type EmbeddedAssistantChunk,
+} from './assistant-index';
+import { createEmbeddingClient } from '../assistant-api/src/model-client';
 
 const embeddingEndpoint =
-  process.env.SCS_ASSISTANT_EMBEDDING_URL ?? 'http://127.0.0.1:8081/v1/embeddings';
-const embeddingModel = process.env.SCS_ASSISTANT_EMBEDDING_MODEL ?? 'bge-m3';
+  process.env.SCS_ASSISTANT_EMBEDDING_URL ??
+  'https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings';
+const embeddingModel = process.env.SCS_ASSISTANT_EMBEDDING_MODEL ?? 'text-embedding-v4';
+const embeddingApiKey = process.env.SCS_ASSISTANT_EMBEDDING_API_KEY ?? '';
+const embeddingDimensions = readNumberEnv('SCS_ASSISTANT_EMBEDDING_DIMENSIONS', 1024);
+const embeddingBatchSize = Math.min(readNumberEnv('SCS_ASSISTANT_EMBEDDING_BATCH_SIZE', 10), 10);
 const outputPath = path.resolve(
   process.env.SCS_ASSISTANT_INDEX_OUT ??
     process.env.SCS_ASSISTANT_INDEX_PATH ??
     'assistant-data/scswiki-rag-index.json',
 );
-
-type EmbeddingResponse = {
-  data?: Array<{
-    embedding?: number[];
-  }>;
-  embedding?: number[];
-};
-
-async function createEmbedding(input: string) {
-  const response = await fetchWithTimeout(embeddingEndpoint, {
-    body: JSON.stringify({
-      model: embeddingModel,
-      input,
-    }),
-    headers: {
-      'content-type': 'application/json',
-    },
-    method: 'POST',
-  });
-
-  if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`Embedding request failed: ${response.status} ${body}`);
-  }
-
-  const data = (await response.json()) as EmbeddingResponse;
-  const embedding = data.data?.[0]?.embedding ?? data.embedding;
-
-  if (!Array.isArray(embedding) || embedding.length === 0) {
-    throw new Error('Embedding response did not include a vector.');
-  }
-
-  return embedding;
-}
+const embeddingClient = createEmbeddingClient({
+  apiKey: embeddingApiKey,
+  batchSize: embeddingBatchSize,
+  dimensions: embeddingDimensions,
+  endpoint: embeddingEndpoint,
+  model: embeddingModel,
+});
 
 async function main() {
   const chunks = await buildAssistantChunks();
-  const embeddedChunks = [];
+  const embeddedChunks: EmbeddedAssistantChunk[] = [];
 
-  for (let index = 0; index < chunks.length; index += 1) {
-    const chunk = chunks[index];
-    const embedding = await createEmbedding(chunk.text);
-    embeddedChunks.push({
-      ...chunk,
-      embedding,
+  for (let index = 0; index < chunks.length; index += embeddingBatchSize) {
+    const batch = chunks.slice(index, index + embeddingBatchSize);
+    const embeddings = await embeddingClient.embedBatch(batch.map((chunk) => chunk.text));
+
+    batch.forEach((chunk, offset) => {
+      const embedding = embeddings[offset];
+
+      if (!embedding) {
+        throw new Error(`Embedding response missed chunk ${index + offset + 1}.`);
+      }
+
+      embeddedChunks.push({
+        ...chunk,
+        embedding,
+      });
     });
 
-    process.stdout.write(`Indexed ${index + 1}/${chunks.length}: ${chunk.title}\r`);
+    process.stdout.write(
+      `Indexed ${Math.min(index + batch.length, chunks.length)}/${chunks.length}: ${batch.at(-1)?.title ?? ''}\r`,
+    );
   }
 
   const assistantIndex: AssistantIndex = {
     version: 1,
     createdAt: new Date().toISOString(),
+    embeddingDimensions,
     embeddingModel,
     chunkCount: embeddedChunks.length,
     chunks: embeddedChunks,
@@ -74,18 +68,9 @@ async function main() {
   console.log(`Wrote ${embeddedChunks.length} assistant chunks to ${outputPath}.`);
 }
 
-async function fetchWithTimeout(url: string, init: RequestInit, timeoutMs = 30_000) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-
-  try {
-    return await fetch(url, {
-      ...init,
-      signal: controller.signal,
-    });
-  } finally {
-    clearTimeout(timer);
-  }
+function readNumberEnv(name: string, fallback: number) {
+  const value = Number(process.env[name]);
+  return Number.isFinite(value) && value > 0 ? value : fallback;
 }
 
 await main();

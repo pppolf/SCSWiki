@@ -44,6 +44,7 @@ SCSWiki 试图把散落在学生之间的学习经验、工具入门、资料索
 - markdownlint
 - GitHub Actions
 - GitHub Pages
+- Node.js assistant API（DeepSeek + DashScope）
 
 ## 本地开发
 
@@ -71,6 +72,8 @@ pnpm preview
 ├─ docs/                    # VitePress 站点内容
 ├─ docs/.vitepress/          # 站点配置、导航、侧边栏和主题扩展
 ├─ docs/public/              # 静态资源与自定义域名 CNAME
+├─ assistant-api/            # 智能助手后端 API
+├─ deploy/                   # 云服务器反代配置示例
 ├─ scripts/                  # 内容验证、资料检查、链接检查和测试脚本
 ├─ .github/                  # Issue Forms、PR 模板、CODEOWNERS 和 Actions
 ├─ CONTENT_GUIDE.md          # 内容可信度与写作规范

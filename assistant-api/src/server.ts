@@ -7,19 +7,16 @@ import {
   buildExtractiveFallback,
   createAssistantAnswer,
   prepareAssistantGeneration,
-  type IndexedChunk,
   type ModelMessage,
-  toRuntimeChunks,
   type RuntimeChunk,
 } from './rag';
-
-type AssistantIndexFile = {
-  version: 1;
-  createdAt: string;
-  embeddingModel: string;
-  chunkCount: number;
-  chunks: IndexedChunk[];
-};
+import {
+  prepareAssistantIndex,
+  type AssistantIndexError,
+  type AssistantIndexFile,
+  type AssistantIndexInfo,
+} from './index-file';
+import { createChatCompletionClient, createEmbeddingClient } from './model-client';
 
 type RateLimitBucket = {
   count: number;
@@ -29,11 +26,16 @@ type RateLimitBucket = {
 const host = process.env.SCS_ASSISTANT_HOST ?? '127.0.0.1';
 const port = readNumberEnv('SCS_ASSISTANT_PORT', 8787);
 const chatEndpoint =
-  process.env.SCS_ASSISTANT_CHAT_URL ?? 'http://127.0.0.1:8080/v1/chat/completions';
-const chatModel = process.env.SCS_ASSISTANT_CHAT_MODEL ?? 'scswiki-qwen';
+  process.env.SCS_ASSISTANT_CHAT_URL ?? 'https://api.deepseek.com/chat/completions';
+const chatModel = process.env.SCS_ASSISTANT_CHAT_MODEL ?? 'deepseek-v4-flash';
+const chatApiKey = process.env.SCS_ASSISTANT_CHAT_API_KEY ?? '';
 const embeddingEndpoint =
-  process.env.SCS_ASSISTANT_EMBEDDING_URL ?? 'http://127.0.0.1:8081/v1/embeddings';
-const embeddingModel = process.env.SCS_ASSISTANT_EMBEDDING_MODEL ?? 'bge-m3';
+  process.env.SCS_ASSISTANT_EMBEDDING_URL ??
+  'https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings';
+const embeddingModel = process.env.SCS_ASSISTANT_EMBEDDING_MODEL ?? 'text-embedding-v4';
+const embeddingApiKey = process.env.SCS_ASSISTANT_EMBEDDING_API_KEY ?? '';
+const embeddingDimensions = readNumberEnv('SCS_ASSISTANT_EMBEDDING_DIMENSIONS', 1024);
+const embeddingBatchSize = readNumberEnv('SCS_ASSISTANT_EMBEDDING_BATCH_SIZE', 10);
 const indexPath = path.resolve(
   process.env.SCS_ASSISTANT_INDEX_PATH ?? 'assistant-data/scswiki-rag-index.json',
 );
@@ -51,10 +53,24 @@ const rateLimitMax = readNumberEnv('SCS_ASSISTANT_RATE_LIMIT_MAX', 10);
 const maxTokens = readNumberEnv('SCS_ASSISTANT_MAX_TOKENS', 2048);
 
 let runtimeChunks: RuntimeChunk[] = [];
-let indexInfo: Omit<AssistantIndexFile, 'chunks'> | null = null;
+let indexInfo: AssistantIndexInfo | null = null;
+let indexError: AssistantIndexError | null = null;
 let indexMtimeMs = 0;
 
 const rateLimits = new Map<string, RateLimitBucket>();
+const chatClient = createChatCompletionClient({
+  apiKey: chatApiKey,
+  endpoint: chatEndpoint,
+  maxTokens,
+  model: chatModel,
+});
+const embeddingClient = createEmbeddingClient({
+  apiKey: embeddingApiKey,
+  batchSize: embeddingBatchSize,
+  dimensions: embeddingDimensions,
+  endpoint: embeddingEndpoint,
+  model: embeddingModel,
+});
 
 await loadIndex();
 
@@ -94,6 +110,7 @@ async function handleRequest(request: IncomingMessage, response: ServerResponse)
           model: chatModel,
         },
         embedding: {
+          dimensions: embeddingDimensions,
           endpoint: embeddingEndpoint,
           model: embeddingModel,
         },
@@ -102,7 +119,9 @@ async function handleRequest(request: IncomingMessage, response: ServerResponse)
           path: indexPath,
           chunks: runtimeChunks.length,
           createdAt: indexInfo?.createdAt ?? null,
+          embeddingDimensions: indexInfo?.embeddingDimensions ?? null,
           embeddingModel: indexInfo?.embeddingModel ?? null,
+          error: indexError,
         },
       },
       corsOrigin,
@@ -136,6 +155,11 @@ async function handleChat(
   }
 
   await reloadIndexIfChanged();
+
+  if (indexError) {
+    sendJson(response, 503, { error: indexError }, corsOrigin);
+    return;
+  }
 
   if (runtimeChunks.length === 0) {
     sendJson(
@@ -296,149 +320,15 @@ async function handleChatStream(
 }
 
 async function createEmbedding(input: string) {
-  const response = await fetchWithTimeout(embeddingEndpoint, {
-    body: JSON.stringify({
-      input,
-      model: embeddingModel,
-    }),
-    headers: {
-      'content-type': 'application/json',
-    },
-    method: 'POST',
-  });
-
-  if (!response.ok) {
-    throw new Error(`Embedding request failed with ${response.status}.`);
-  }
-
-  const data = (await response.json()) as {
-    data?: Array<{ embedding?: number[] }>;
-    embedding?: number[];
-  };
-  const embedding = data.data?.[0]?.embedding ?? data.embedding;
-
-  if (!Array.isArray(embedding) || embedding.length === 0) {
-    throw new Error('Embedding response did not include a vector.');
-  }
-
-  return embedding;
+  return embeddingClient.embed(input);
 }
 
 async function createCompletion(messages: ModelMessage[]) {
-  const response = await fetchWithTimeout(
-    chatEndpoint,
-    {
-      body: JSON.stringify({
-        chat_template_kwargs: {
-          enable_thinking: false,
-        },
-        max_tokens: maxTokens,
-        messages,
-        model: chatModel,
-        temperature: 0.2,
-      }),
-      headers: {
-        'content-type': 'application/json',
-      },
-      method: 'POST',
-    },
-    60_000,
-  );
-
-  if (!response.ok) {
-    throw new Error(`Chat request failed with ${response.status}.`);
-  }
-
-  const data = (await response.json()) as {
-    choices?: Array<{
-      message?: {
-        content?: string;
-        reasoning_content?: string;
-      };
-    }>;
-  };
-
-  return data.choices?.[0]?.message?.content ?? '';
+  return chatClient.complete(messages);
 }
 
 async function createCompletionStream(messages: ModelMessage[], onDelta: (delta: string) => void) {
-  const response = await fetchWithTimeout(
-    chatEndpoint,
-    {
-      body: JSON.stringify({
-        chat_template_kwargs: {
-          enable_thinking: false,
-        },
-        max_tokens: maxTokens,
-        messages,
-        model: chatModel,
-        stream: true,
-        temperature: 0.2,
-      }),
-      headers: {
-        accept: 'text/event-stream',
-        'content-type': 'application/json',
-      },
-      method: 'POST',
-    },
-    90_000,
-  );
-
-  if (!response.ok) {
-    throw new Error(`Chat stream request failed with ${response.status}.`);
-  }
-
-  const contentType = response.headers.get('content-type') ?? '';
-
-  if (!contentType.includes('text/event-stream')) {
-    const data = (await response.json()) as {
-      choices?: Array<{
-        message?: {
-          content?: string;
-          reasoning_content?: string;
-        };
-      }>;
-    };
-    onDelta(data.choices?.[0]?.message?.content ?? '');
-    return;
-  }
-
-  const reader = response.body?.getReader();
-
-  if (!reader) {
-    throw new Error('Chat stream response did not include a body.');
-  }
-
-  const decoder = new TextDecoder();
-  let buffer = '';
-
-  while (true) {
-    const { done, value } = await reader.read();
-
-    if (done) {
-      break;
-    }
-
-    buffer += decoder.decode(value, { stream: true });
-    buffer = buffer.replace(/\r\n/g, '\n');
-    let frameEnd = buffer.indexOf('\n\n');
-
-    while (frameEnd !== -1) {
-      const frame = buffer.slice(0, frameEnd);
-      buffer = buffer.slice(frameEnd + 2);
-      const delta = readChatStreamDelta(frame);
-
-      if (delta === '[DONE]') {
-        return;
-      }
-
-      if (delta) {
-        onDelta(delta);
-      }
-
-      frameEnd = buffer.indexOf('\n\n');
-    }
-  }
+  await chatClient.completeStream(messages, onDelta);
 }
 
 async function loadIndex() {
@@ -446,18 +336,23 @@ async function loadIndex() {
     const stats = await fs.stat(indexPath);
     const raw = await fs.readFile(indexPath, 'utf8');
     const index = JSON.parse(raw) as AssistantIndexFile;
+    const prepared = prepareAssistantIndex(index, {
+      expectedEmbeddingDimensions: embeddingDimensions,
+      expectedEmbeddingModel: embeddingModel,
+    });
 
-    runtimeChunks = toRuntimeChunks(index.chunks);
-    indexInfo = {
-      chunkCount: index.chunkCount,
-      createdAt: index.createdAt,
-      embeddingModel: index.embeddingModel,
-      version: index.version,
-    };
+    runtimeChunks = prepared.chunks;
+    indexInfo = prepared.info;
+    indexError = prepared.error;
     indexMtimeMs = stats.mtimeMs;
+
+    if (indexError) {
+      console.warn(`Assistant index is not usable: ${indexError.message}`);
+    }
   } catch (error) {
     runtimeChunks = [];
     indexInfo = null;
+    indexError = null;
     indexMtimeMs = 0;
     console.warn(`Assistant index is not loaded: ${(error as Error).message}`);
   }
@@ -493,20 +388,6 @@ async function readBody(request: IncomingMessage, maxBytes = 64 * 1024) {
   }
 
   return Buffer.concat(chunks).toString('utf8');
-}
-
-async function fetchWithTimeout(url: string, init: RequestInit, timeoutMs = 30_000) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-
-  try {
-    return await fetch(url, {
-      ...init,
-      signal: controller.signal,
-    });
-  } finally {
-    clearTimeout(timer);
-  }
 }
 
 function consumeRateLimit(clientId: string) {
@@ -594,42 +475,6 @@ function startSse(response: ServerResponse, corsOrigin: string | null) {
 function writeSse(response: ServerResponse, event: string, data: unknown) {
   response.write(`event: ${event}\n`);
   response.write(`data: ${JSON.stringify(data)}\n\n`);
-}
-
-function readChatStreamDelta(frame: string) {
-  const data = frame
-    .split(/\r?\n/)
-    .filter((line) => line.startsWith('data:'))
-    .map((line) => line.slice(5).trimStart())
-    .join('\n')
-    .trim();
-
-  if (!data) {
-    return '';
-  }
-
-  if (data === '[DONE]') {
-    return '[DONE]';
-  }
-
-  try {
-    const parsed = JSON.parse(data) as {
-      choices?: Array<{
-        delta?: {
-          content?: string;
-          reasoning_content?: string;
-        };
-        message?: {
-          content?: string;
-          reasoning_content?: string;
-        };
-      }>;
-    };
-
-    return parsed.choices?.[0]?.delta?.content ?? parsed.choices?.[0]?.message?.content ?? '';
-  } catch {
-    return '';
-  }
 }
 
 function sanitizeStreamDelta(delta: string) {

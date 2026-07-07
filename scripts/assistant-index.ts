@@ -36,6 +36,7 @@ export type EmbeddedAssistantChunk = AssistantChunk & {
 export type AssistantIndex = {
   version: 1;
   createdAt: string;
+  embeddingDimensions?: number;
   embeddingModel: string;
   chunkCount: number;
   chunks: EmbeddedAssistantChunk[];

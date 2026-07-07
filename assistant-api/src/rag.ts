@@ -175,6 +175,20 @@ export async function prepareAssistantGeneration(
     throw new AssistantDependencyError('embedding_unavailable', '向量检索服务暂时不可用。');
   }
 
+  const indexEmbeddingDimensions = deps.chunks.find((chunk) => chunk.embedding.length > 0)
+    ?.embedding.length;
+
+  if (
+    typeof indexEmbeddingDimensions === 'number' &&
+    queryEmbedding.length !== indexEmbeddingDimensions
+  ) {
+    throw new AssistantDependencyError(
+      'embedding_dimension_mismatch',
+      `向量维度不匹配：查询向量是 ${queryEmbedding.length} 维，索引是 ${indexEmbeddingDimensions} 维。请使用同一个 embedding 模型重新生成索引。`,
+      503,
+    );
+  }
+
   const chunks = selectTopChunks(queryEmbedding, deps.chunks, {
     limit: deps.topK ?? defaultTopK,
     minScore: deps.minScore ?? defaultMinScore,
@@ -203,7 +217,7 @@ export async function prepareAssistantGeneration(
     ...history,
     {
       role: 'user',
-      content: `/no_think\n\n${prompt}`,
+      content: prompt,
     },
   ];
   const warnings = unique(chunks.flatMap((chunk) => buildTrustWarnings(chunk)));

@@ -52,7 +52,7 @@ describe('assistant RAG behavior', () => {
       title: '新生常见问题',
       url: '/start/faq',
     });
-    expect(capturedMessages.at(-1)?.content).toContain('/no_think');
+    expect(capturedMessages.at(-1)?.content).not.toContain('/no_think');
     expect(capturedMessages.at(-1)?.content).toContain('【检索资料】');
   });
 
@@ -122,5 +122,24 @@ describe('assistant RAG behavior', () => {
     expect(result.answer).toContain('原文摘录');
     expect(result.answer).toContain('宿舍使用大功率电器可能跳闸');
     expect(result.sources[0]?.url).toBe('/start/faq');
+  });
+
+  it('fails clearly when query and index embedding dimensions differ', async () => {
+    await expect(
+      createAssistantAnswer(
+        {
+          message: '宿舍限电吗',
+        },
+        {
+          chunks: toRuntimeChunks([makeChunk()]),
+          complete: async () => '不会执行',
+          embed: async () => [1, 0, 0],
+          minScore: 0,
+        },
+      ),
+    ).rejects.toMatchObject({
+      code: 'embedding_dimension_mismatch',
+      statusCode: 503,
+    });
   });
 });
