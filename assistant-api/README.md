@@ -37,6 +37,8 @@ SCS_ASSISTANT_ALLOWED_ORIGINS=https://scswiki.com,https://www.scswiki.com,http:/
 
 旧的 `bge-m3` 索引不能和 `text-embedding-v4` 混用。Markdown 更新后，在云服务器上加载环境变量并重新生成索引：
 
+只有 Front Matter 中 `status: active` 的页面会进入向量索引。`draft`、`needs-review` 和 `archived` 页面不会提供给 AI；后端加载旧索引时也会再次过滤这些状态。
+
 ```bash
 set -a
 . /etc/scswiki-assistant.env

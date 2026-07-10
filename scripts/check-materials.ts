@@ -1,12 +1,21 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { courseMaterials } from '../docs/.vitepress/materials';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publicRoot = path.join(repoRoot, 'docs', 'public');
+const materialsRoot = path.join(publicRoot, 'materials');
 const errors: string[] = [];
 const seenHrefs = new Set<string>();
+const validFileName = /^[a-z0-9]+(?:-[a-z0-9]+)*\.[a-z0-9]+$/;
+
+function listFiles(directory: string): string[] {
+  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = path.join(directory, entry.name);
+    return entry.isDirectory() ? listFiles(entryPath) : [entryPath];
+  });
+}
 
 for (const [courseKey, course] of Object.entries(courseMaterials)) {
   const expectedDirectory = `/materials/${courseKey}/`;
@@ -37,6 +46,13 @@ for (const [courseKey, course] of Object.entries(courseMaterials)) {
         }
         seenHrefs.add(file.href);
 
+        const fileName = path.posix.basename(file.href);
+        if (!validFileName.test(fileName)) {
+          errors.push(
+            `${resource.title} / ${file.title}: filename must use lowercase ASCII kebab-case, got ${fileName}`,
+          );
+        }
+
         const filePath = path.join(publicRoot, decodeURI(file.href));
         if (!existsSync(filePath)) {
           errors.push(
@@ -54,6 +70,13 @@ for (const [courseKey, course] of Object.entries(courseMaterials)) {
         }
       }
     }
+  }
+}
+
+for (const filePath of listFiles(materialsRoot)) {
+  const href = `/${path.relative(publicRoot, filePath).split(path.sep).join('/')}`;
+  if (!seenHrefs.has(href)) {
+    errors.push(`unregistered material file: docs/public${href}`);
   }
 }
 

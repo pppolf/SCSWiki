@@ -1,6 +1,6 @@
 ---
-title: 习近平新时代中国特色社会主义思想资料
-description: 习近平新时代中国特色社会主义思想课程相关学习资料整理
+title: 单片机原理及应用资料
+description: 单片机原理及应用课程相关学习资料整理
 category: materials
 audience:
   - 学生
@@ -13,21 +13,21 @@ sources: []
 
 <ContentMeta />
 
-# 习近平新时代中国特色社会主义思想资料
+# 单片机原理及应用资料
 
-本页用于整理习思想课程的学习资料。资料内容以同学贡献为主，仅供学习参考；课程范围、实验要求、作业要求和考试安排请以任课教师当学期说明为准。
+本页用于整理单片机原理及应用课程的学习资料。资料内容以同学贡献为主，仅供学习参考；课程范围、实验要求、作业要求和考试安排请以任课教师当学期说明为准。
 
 ## 资料目录
 
-<MaterialResourceList course="xjp" />
+<MaterialResourceList course="microcontroller" />
 
 ## 维护方式
 
 每门课程使用一页内容和一个附件目录：
 
 ```text
-docs/materials/xjp.md
-docs/public/materials/xjp/
+docs/materials/microcontroller.md
+docs/public/materials/microcontroller/
 ```
 
 资料清单统一维护在：
@@ -42,7 +42,7 @@ docs/.vitepress/materials.ts
 - 实验资料：实验环境、实验说明、调试记录。
 - 试题资料：试卷、练习题和答案。试卷与答案应放在同一个资料组里。
 
-新增资料时，先把文件放到对应课程目录，再在 `courseMaterials` 中增加一条记录
+新增资料时，先把文件放到对应课程目录，再在 `courseMaterials` 中增加一条记录。
 
 只有 PDF 支持在线预览。DOCX、PPTX、XLSX、ZIP 等格式可以上传，但页面只提供下载。
 

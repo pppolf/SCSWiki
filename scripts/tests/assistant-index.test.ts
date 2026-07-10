@@ -3,6 +3,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
+  buildAssistantChunks,
   buildAssistantChunksForPage,
   cleanAssistantMarkdown,
   pageUrlFromFile,
@@ -96,5 +97,39 @@ describe('assistant markdown index extraction', () => {
     expect(
       cleanAssistantMarkdown('<ContentMeta />\n\n<MaterialResourceList course="c" />\n\n正文'),
     ).toBe('正文');
+  });
+
+  it('indexes only pages with active status', async () => {
+    const docsRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'scswiki-assistant-index-'));
+    const makePage = (title: string, status: 'active' | 'needs-review') =>
+      [
+        '---',
+        `title: ${title}`,
+        `description: ${title}描述`,
+        'category: study',
+        'audience:',
+        '  - 学生',
+        'content_type: verified',
+        `status: ${status}`,
+        'maintainers:',
+        '  - SCSWiki 维护组',
+        'sources: []',
+        '---',
+        '',
+        `# ${title}`,
+        '',
+        `${title}正文。`,
+      ].join('\n');
+
+    fs.writeFileSync(path.join(docsRoot, 'active.md'), makePage('有效页面', 'active'));
+    fs.writeFileSync(
+      path.join(docsRoot, 'needs-review.md'),
+      makePage('待核验页面', 'needs-review'),
+    );
+
+    const chunks = await buildAssistantChunks({ docsRoot });
+
+    expect(chunks.map((chunk) => chunk.title)).toEqual(['有效页面']);
+    expect(chunks.every((chunk) => chunk.status === 'active')).toBe(true);
   });
 });

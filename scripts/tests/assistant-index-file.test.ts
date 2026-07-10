@@ -59,4 +59,29 @@ describe('assistant index validation', () => {
     expect(result.error?.code).toBe('index_embedding_dimensions_mismatch');
     expect(result.chunks).toEqual([]);
   });
+
+  it('drops non-active chunks when loading an existing index', () => {
+    const activeChunk = makeIndex().chunks[0];
+    const result = prepareAssistantIndex(
+      makeIndex({
+        chunkCount: 2,
+        chunks: [
+          activeChunk,
+          {
+            ...activeChunk,
+            id: 'chunk-needs-review',
+            status: 'needs-review',
+            text: '这段内容不应进入检索。',
+          },
+        ],
+      }),
+      {
+        expectedEmbeddingDimensions: 2,
+        expectedEmbeddingModel: 'text-embedding-v4',
+      },
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.chunks.map((chunk) => chunk.id)).toEqual(['chunk-1']);
+  });
 });

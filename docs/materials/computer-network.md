@@ -1,5 +1,5 @@
 ---
-title: 计算机网络资料
+title: 计算机网络原理资料
 description: 计算机网络课程相关学习资料整理
 category: materials
 audience:

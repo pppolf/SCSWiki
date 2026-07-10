@@ -39,15 +39,15 @@ export const courseMaterials = {
         description: '实验答案、实验环境、实验报告参考结构和调试记录。',
         resources: [
           {
-            title: '计算机组成原理头歌平台实验答案',
-            description: '计算机组成原理头歌平台实验答案。',
-            status: '已核验',
+            title: '华科计算机组成原理实验参考资源',
+            description: '包含 MIPS CPU、单总线 CPU、存储系统和运算器设计等实验参考文件。',
+            status: '待核验',
             files: [
               {
-                title: '实验答案',
-                href: '/materials/computer-organization/计算机组成原理.zip',
+                title: '实验参考资源包',
+                href: '/materials/computer-organization/hust-experiment-resources.zip',
                 format: 'ZIP',
-                role: '实验',
+                role: '实验参考',
               },
             ],
           },
@@ -64,7 +64,7 @@ export const courseMaterials = {
             files: [
               {
                 title: '复习题',
-                href: '/materials/computer-organization/2022年计组复习题.pdf',
+                href: '/materials/computer-organization/review-questions-2022.pdf',
                 format: 'PDF',
                 role: '试题',
               },
@@ -77,7 +77,7 @@ export const courseMaterials = {
             files: [
               {
                 title: '练习试卷',
-                href: '/materials/computer-organization/计算机组成原理练习试卷.pdf',
+                href: '/materials/computer-organization/practice-exam.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
@@ -88,7 +88,7 @@ export const courseMaterials = {
     ],
   },
   'computer-network': {
-    title: '计算机网络',
+    title: '计算机网络原理',
     directory: '/materials/computer-network/',
     categories: [
       {
@@ -102,7 +102,7 @@ export const courseMaterials = {
             files: [
               {
                 title: '计算机网络原理复习文档',
-                href: '/materials/computer-network/计算机网络原理复习文档.pdf',
+                href: '/materials/computer-network/review-notes.pdf',
                 format: 'PDF',
                 role: '文档',
               },
@@ -126,7 +126,7 @@ export const courseMaterials = {
             files: [
               {
                 title: '计算机网络原理题库',
-                href: '/materials/computer-network/计网题库.pdf',
+                href: '/materials/computer-network/question-bank.pdf',
                 format: 'PDF',
                 role: '题库',
               },
@@ -161,7 +161,7 @@ export const courseMaterials = {
             files: [
               {
                 title: '期末试题',
-                href: '/materials/database-theory/A-2024-软件工程-数据库原理-期末试题.pdf',
+                href: '/materials/database-theory/software-engineering-2024-cohort-exam-a.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
@@ -178,21 +178,7 @@ export const courseMaterials = {
       {
         title: '知识点笔记',
         description: '章节知识点、复习提纲和概念梳理。',
-        resources: [
-          {
-            title: '离散数学资料',
-            description: '离散数学课程学习资料。',
-            status: '已核验',
-            files: [
-              {
-                title: '学习资料',
-                href: '/materials/discrete-mathematics/离散数学.pdf',
-                format: 'PDF',
-                role: '文档',
-              },
-            ],
-          },
-        ],
+        resources: [],
       },
       {
         title: '实验资料',
@@ -204,60 +190,60 @@ export const courseMaterials = {
         description: '试卷、练习题和对应答案放在同一个资料组中。',
         resources: [
           {
-            title: '2012级离散数学A卷',
-            description: '2012级离散数学A卷汇总。',
+            title: '2012级离散数学 A 卷',
+            description: '2012级离散数学 A 卷。',
             status: '已核验',
             files: [
               {
-                title: '复习题',
-                href: '/materials/discrete-mathematics/2012级离散数学A卷.pdf',
+                title: '2012级离散数学 A 卷',
+                href: '/materials/discrete-mathematics/exam-2012-cohort-a.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
             ],
           },
           {
-            title: '2013级离散数学A卷',
-            description: '2013级离散数学A卷试题汇总。',
+            title: '2013级离散数学 A 卷',
+            description: '2013级离散数学 A 卷及评分标准。',
             status: '已核验',
             files: [
               {
-                title: '2013级离散数学A卷',
-                href: '/materials/discrete-mathematics/2013级离散数学A卷.pdf',
+                title: '2013级离散数学 A 卷',
+                href: '/materials/discrete-mathematics/exam-2013-cohort-a.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
-                title: '2013级离散数学A卷答案',
-                href: '/materials/discrete-mathematics/2013级离散数学A卷参考答案及计分标准.pdf',
+                title: '2013级离散数学 A 卷评分标准',
+                href: '/materials/discrete-mathematics/exam-2013-cohort-a-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
             ],
           },
           {
-            title: '离散数学2019-2020学年第一学期期末试卷',
-            description: '离散数学2019-2020学年第一学期期末试卷汇总。',
+            title: '离散数学 2019-2020 学年第一学期期末试卷',
+            description: '离散数学 2019-2020 学年第一学期期末试卷。',
             status: '已核验',
             files: [
               {
                 title: '期末试卷',
-                href: '/materials/discrete-mathematics/离散数学2019-2020学年第一学期期末试卷.pdf',
+                href: '/materials/discrete-mathematics/final-exam-2019-2020-1.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
             ],
           },
           {
-            title: '2021秋离散数学复习题',
-            description: '2021秋离散数学复习题汇总。',
+            title: '2021年春季离散数学复习题',
+            description: '2021年春季离散数学期末复习题。',
             status: '已核验',
             files: [
               {
-                title: '复习题',
-                href: '/materials/discrete-mathematics/2021秋离散数学复习题.pdf',
+                title: '2021年春季复习题',
+                href: '/materials/discrete-mathematics/review-questions-2021-spring.pdf',
                 format: 'PDF',
-                role: '试卷',
+                role: '练习题',
               },
             ],
           },
@@ -280,7 +266,7 @@ export const courseMaterials = {
             files: [
               {
                 title: '考点重点资料',
-                href: '/materials/computer-os/操作系统考点重点.pdf',
+                href: '/materials/computer-os/exam-review-notes.pdf',
                 format: 'PDF',
                 role: '文档',
               },
@@ -315,13 +301,13 @@ export const courseMaterials = {
             files: [
               {
                 title: '高等数学上复习要点',
-                href: '/materials/advanced-math/高等数学上复习要点.pdf',
+                href: '/materials/advanced-math/review-notes-volume-1.pdf',
                 format: 'PDF',
                 role: '文档',
               },
               {
                 title: '高等数学下复习要点',
-                href: '/materials/advanced-math/高等数学下复习要点.pdf',
+                href: '/materials/advanced-math/review-notes-volume-2.pdf',
                 format: 'PDF',
                 role: '文档',
               },
@@ -339,25 +325,25 @@ export const courseMaterials = {
         description: '试卷、练习题和对应答案放在同一个资料组中。',
         resources: [
           {
-            title: '高等数学12级试卷',
-            description: '高等数学12级试卷汇总。',
+            title: '2012级高等数学试卷',
+            description: '2012级高等数学 A、B 卷及 A 卷参考答案。',
             status: '已核验',
             files: [
               {
-                title: '高数试题A卷',
-                href: '/materials/advanced-math/12级高数试题-A.pdf',
+                title: '高等数学 A 卷',
+                href: '/materials/advanced-math/exam-2012-cohort-a.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
-                title: '高数试题A卷答案',
-                href: '/materials/advanced-math/12级高数-A-参考答案.pdf',
+                title: '高等数学 A 卷参考答案',
+                href: '/materials/advanced-math/exam-2012-cohort-a-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
               {
-                title: '高数试题B卷',
-                href: '/materials/advanced-math/12级高数试题-B.pdf',
+                title: '高等数学 B 卷',
+                href: '/materials/advanced-math/exam-2012-cohort-b.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
@@ -370,13 +356,13 @@ export const courseMaterials = {
             files: [
               {
                 title: '高数A下册练习题',
-                href: '/materials/advanced-math/高数A下册练习题.pdf',
+                href: '/materials/advanced-math/calculus-a-volume-2-exercises.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
                 title: '高数A下册答案',
-                href: '/materials/advanced-math/高数A下册练习题(含答案).pdf',
+                href: '/materials/advanced-math/calculus-a-volume-2-exercises-with-answers.pdf',
                 format: 'PDF',
                 role: '答案',
               },
@@ -389,13 +375,13 @@ export const courseMaterials = {
             files: [
               {
                 title: '练习试卷',
-                href: '/materials/advanced-math/高数A下练习试卷.pdf',
+                href: '/materials/advanced-math/calculus-a-volume-2-practice-exam.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
                 title: '练习答案',
-                href: '/materials/advanced-math/高数A下练习试卷_参考答案与详细解析.pdf',
+                href: '/materials/advanced-math/calculus-a-volume-2-practice-exam-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
@@ -408,13 +394,13 @@ export const courseMaterials = {
             files: [
               {
                 title: '高数下册综合练习1',
-                href: '/materials/advanced-math/高数下册综合练习1.pdf',
+                href: '/materials/advanced-math/calculus-volume-2-comprehensive-exercises-01.pdf',
                 format: 'PDF',
                 role: '练习',
               },
               {
                 title: '高数下册综合练习2',
-                href: '/materials/advanced-math/高数下册综合练习2.pdf',
+                href: '/materials/advanced-math/calculus-volume-2-comprehensive-exercises-02.pdf',
                 format: 'PDF',
                 role: '练习',
               },
@@ -427,7 +413,7 @@ export const courseMaterials = {
             files: [
               {
                 title: '高等数学期末模拟练习',
-                href: '/materials/advanced-math/高等数学期末模拟练习.pdf',
+                href: '/materials/advanced-math/final-mock-exercises.pdf',
                 format: 'PDF',
                 role: '练习',
               },
@@ -456,190 +442,190 @@ export const courseMaterials = {
         description: '试卷、练习题和对应答案放在同一个资料组中。',
         resources: [
           {
-            title: 'C语言13级试卷',
-            description: 'C语言13级试卷汇总。',
+            title: '2012级 C语言 A 卷',
+            description: '2012级 C语言 A 卷及参考答案。',
             status: '已核验',
             files: [
               {
-                title: 'C语言A卷',
-                href: '/materials/c/13级C语言试卷A卷.pdf',
+                title: 'C语言 A 卷',
+                href: '/materials/c/exam-2012-cohort-a.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
-                title: 'C语言A卷答案',
-                href: '/materials/c/13级C语言A卷答案.pdf',
+                title: 'C语言 A 卷参考答案',
+                href: '/materials/c/exam-2012-cohort-a-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
             ],
           },
           {
-            title: 'C语言试卷1',
-            description: 'C语言试卷1汇总。',
+            title: 'C语言 A 卷',
+            description: 'C语言 A 卷及评分标准。',
             status: '已核验',
             files: [
               {
-                title: 'C语言试卷1',
-                href: '/materials/c/试题(A卷).pdf',
+                title: 'C语言 A 卷',
+                href: '/materials/c/exam-a.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
-                title: 'C语言试卷1答案',
-                href: '/materials/c/试题(A卷)答案及评分标准.pdf',
+                title: 'C语言 A 卷评分标准',
+                href: '/materials/c/exam-a-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
             ],
           },
           {
-            title: 'C语言试卷2',
-            description: 'C语言试卷2汇总。',
+            title: 'C语言 B 卷',
+            description: 'C语言 B 卷及评分标准。',
             status: '已核验',
             files: [
               {
-                title: 'C语言试卷2',
-                href: '/materials/c/试题(B卷).pdf',
+                title: 'C语言 B 卷',
+                href: '/materials/c/exam-b.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
-                title: 'C语言试卷2答案',
-                href: '/materials/c/试题(B卷)答案及评分标准.pdf',
+                title: 'C语言 B 卷评分标准',
+                href: '/materials/c/exam-b-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
             ],
           },
           {
-            title: 'C语言试卷3',
-            description: 'C语言试卷3汇总。',
+            title: 'C语言 C 卷',
+            description: 'C语言 C 卷及评分标准。',
             status: '已核验',
             files: [
               {
-                title: 'C语言试卷3',
-                href: '/materials/c/试题(C卷).pdf',
+                title: 'C语言 C 卷',
+                href: '/materials/c/exam-c.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
-                title: 'C语言试卷3答案',
-                href: '/materials/c/试题(C卷)答案及评分标准.pdf',
+                title: 'C语言 C 卷评分标准',
+                href: '/materials/c/exam-c-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
             ],
           },
           {
-            title: 'C语言试卷4',
-            description: 'C语言试卷4汇总。',
+            title: 'C语言 G 卷',
+            description: 'C语言 G 卷及评分标准。',
             status: '已核验',
             files: [
               {
-                title: 'C语言试卷4',
-                href: '/materials/c/试题(G卷).pdf',
+                title: 'C语言 G 卷',
+                href: '/materials/c/exam-g.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
-                title: 'C语言试卷4答案',
-                href: '/materials/c/试题(G卷)答案及评分标准.pdf',
+                title: 'C语言 G 卷评分标准',
+                href: '/materials/c/exam-g-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
             ],
           },
           {
-            title: 'C语言试卷5',
-            description: 'C语言试卷5汇总。',
+            title: 'C语言 H 卷',
+            description: 'C语言 H 卷及评分标准。',
             status: '已核验',
             files: [
               {
-                title: 'C语言试卷5',
-                href: '/materials/c/试题(H卷).pdf',
+                title: 'C语言 H 卷',
+                href: '/materials/c/exam-h.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
-                title: 'C语言试卷5答案',
-                href: '/materials/c/试题(H卷)答案及评分标准.pdf',
+                title: 'C语言 H 卷评分标准',
+                href: '/materials/c/exam-h-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
             ],
           },
           {
-            title: 'C语言试卷6',
-            description: 'C语言试卷6汇总。',
+            title: 'C语言 I 卷',
+            description: 'C语言 I 卷及评分标准。',
             status: '已核验',
             files: [
               {
-                title: 'C语言试卷6',
-                href: '/materials/c/试题(I卷).pdf',
+                title: 'C语言 I 卷',
+                href: '/materials/c/exam-i.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
-                title: 'C语言试卷6答案',
-                href: '/materials/c/试题(I卷)答案与评分标准.pdf',
+                title: 'C语言 I 卷评分标准',
+                href: '/materials/c/exam-i-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
             ],
           },
           {
-            title: 'C语言试卷7',
-            description: 'C语言试卷7汇总。',
+            title: 'C语言 K 卷',
+            description: 'C语言 K 卷及评分标准。',
             status: '已核验',
             files: [
               {
-                title: 'C语言试卷7',
-                href: '/materials/c/试题(K卷).pdf',
+                title: 'C语言 K 卷',
+                href: '/materials/c/exam-k.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
-                title: 'C语言试卷7答案',
-                href: '/materials/c/试题(K卷)答案及评分标准.pdf',
+                title: 'C语言 K 卷评分标准',
+                href: '/materials/c/exam-k-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
             ],
           },
           {
-            title: 'C语言试卷8',
-            description: 'C语言试卷8汇总。',
+            title: 'C语言 M 卷',
+            description: 'C语言 M 卷及评分标准。',
             status: '已核验',
             files: [
               {
-                title: 'C语言试卷8',
-                href: '/materials/c/试题(M卷).pdf',
+                title: 'C语言 M 卷',
+                href: '/materials/c/exam-m.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
-                title: 'C语言试卷8答案',
-                href: '/materials/c/试题(M卷)答案及评分标准.pdf',
+                title: 'C语言 M 卷评分标准',
+                href: '/materials/c/exam-m-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
             ],
           },
           {
-            title: 'C语言试卷9',
-            description: 'C语言试卷9汇总。',
+            title: 'C语言 N 卷',
+            description: 'C语言 N 卷及评分标准。',
             status: '已核验',
             files: [
               {
-                title: 'C语言试卷9',
-                href: '/materials/c/试题(N卷).pdf',
+                title: 'C语言 N 卷',
+                href: '/materials/c/exam-n.pdf',
                 format: 'PDF',
                 role: '试卷',
               },
               {
-                title: 'C语言试卷9答案',
-                href: '/materials/c/试题(N卷)答案及评分标准.pdf',
+                title: 'C语言 N 卷评分标准',
+                href: '/materials/c/exam-n-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
@@ -664,7 +650,7 @@ export const courseMaterials = {
             files: [
               {
                 title: '软件过程项目管理',
-                href: '/materials/software/软件工程.pdf',
+                href: '/materials/software/review-notes.pdf',
                 format: 'PDF',
                 role: '文档',
               },
@@ -709,25 +695,25 @@ export const courseMaterials = {
             files: [
               {
                 title: '大学物理上册练习题',
-                href: '/materials/physics/大学物理习题集上册.pdf',
+                href: '/materials/physics/exercise-book-volume-1.pdf',
                 format: 'PDF',
                 role: '练习题',
               },
               {
                 title: '大学物理上册练习题（答案）',
-                href: '/materials/physics/大学物理习题集上册_详细答案.pdf',
+                href: '/materials/physics/exercise-book-volume-1-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
               {
                 title: '大学物理下册练习题',
-                href: '/materials/physics/大学物理习题集下册.pdf',
+                href: '/materials/physics/exercise-book-volume-2.pdf',
                 format: 'PDF',
                 role: '练习题',
               },
               {
                 title: '大学物理下册练习题（答案）',
-                href: '/materials/physics/大学物理习题集下册_详细答案.pdf',
+                href: '/materials/physics/exercise-book-volume-2-answer.pdf',
                 format: 'PDF',
                 role: '答案',
               },
@@ -738,7 +724,7 @@ export const courseMaterials = {
     ],
   },
   'linear-algebra': {
-    title: '大学物理',
+    title: '线性代数',
     directory: '/materials/linear-algebra/',
     categories: [
       {
@@ -756,45 +742,45 @@ export const courseMaterials = {
         description: '试卷、练习题和对应答案放在同一个资料组中。',
         resources: [
           {
-            title: '2025级线性代数期末复习大题',
-            description: '2025级线性代数期末复习大题汇总',
+            title: '线性代数课后习题解答选页',
+            description: '教材课后习题手写解答选页，按原教材页码整理。',
             status: '已核验',
             files: [
               {
-                title: '线代-同济-行列式',
-                href: '/materials/linear-algebra/线代-同济-行列式.pdf',
+                title: '同济教材行列式习题解答',
+                href: '/materials/linear-algebra/tongji-determinant-exercises.pdf',
                 format: 'PDF',
-                role: '课后习题',
+                role: '习题解答',
               },
               {
-                title: '线性代数-课-71页',
-                href: '/materials/linear-algebra/线性代数-课-71页.pdf',
+                title: '教材第 71 页习题解答',
+                href: '/materials/linear-algebra/textbook-exercises-page-071.pdf',
                 format: 'PDF',
-                role: '课后习题',
+                role: '习题解答',
               },
               {
-                title: '线性代数-课-163页',
-                href: '/materials/linear-algebra/线性代数-课-163页.pdf',
+                title: '教材第 163 页习题解答',
+                href: '/materials/linear-algebra/textbook-exercises-page-163.pdf',
                 format: 'PDF',
-                role: '课后习题',
+                role: '习题解答',
               },
               {
-                title: '线性代数-课-177页',
-                href: '/materials/linear-algebra/线性代数-课-177页.pdf',
+                title: '教材第 177 页习题解答',
+                href: '/materials/linear-algebra/textbook-exercises-page-177.pdf',
                 format: 'PDF',
-                role: '课后习题',
+                role: '习题解答',
               },
               {
-                title: '线性代数-课-188页',
-                href: '/materials/linear-algebra/线性代数-课-188页.pdf',
+                title: '教材第 188 页习题解答',
+                href: '/materials/linear-algebra/textbook-exercises-page-188.pdf',
                 format: 'PDF',
-                role: '课后习题',
+                role: '习题解答',
               },
               {
-                title: '线性代数-课-193页',
-                href: '/materials/linear-algebra/线性代数-课-193页.pdf',
+                title: '教材第 193 页习题解答',
+                href: '/materials/linear-algebra/textbook-exercises-page-193.pdf',
                 format: 'PDF',
-                role: '课后习题',
+                role: '习题解答',
               },
             ],
           },
@@ -811,33 +797,27 @@ export const courseMaterials = {
         description: '章节知识点、复习提纲和概念梳理。',
         resources: [
           {
-            title: '2024级JavaWeb期末复习资料',
-            description: '2024级JavaWeb期末复习资料汇总',
+            title: 'Java Web 课程知识点资料',
+            description: 'Java Web 全课程讲义、知识点清单与开卷速查资料。',
             status: '已核验',
             files: [
               {
-                title: 'JavaWeb1-12章大题预测与答题模板',
-                href: '/materials/javaweb/JavaWeb1-12章大题预测与答题模板.pdf',
+                title: 'Java Web 期末开卷知识点清单',
+                href: '/materials/javaweb/open-book-exam-quick-reference.pdf',
                 format: 'PDF',
-                role: '文档',
+                role: '知识点清单',
               },
               {
-                title: 'JavaWeb期末开卷知识点清单',
-                href: '/materials/javaweb/JavaWeb期末开卷知识点清单.pdf',
+                title: 'Java Web 全课程零基础学习讲义',
+                href: '/materials/javaweb/beginner-course-guide.pdf',
                 format: 'PDF',
-                role: '文档',
+                role: '课程讲义',
               },
               {
-                title: 'JavaWeb前12章课后习题答案整合',
-                href: '/materials/javaweb/JavaWeb前12章课后习题答案整合.pdf',
+                title: 'Java Web 全课程知识点清单',
+                href: '/materials/javaweb/course-knowledge-checklist.pdf',
                 format: 'PDF',
-                role: '文档',
-              },
-              {
-                title: 'JavaWeb全课程知识点清单',
-                href: '/materials/javaweb/JavaWeb全课程知识点清单.pdf',
-                format: 'PDF',
-                role: '文档',
+                role: '知识点清单',
               },
             ],
           },
@@ -851,7 +831,90 @@ export const courseMaterials = {
       {
         title: '试题资料',
         description: '试卷、练习题和对应答案放在同一个资料组中。',
-        resources: [],
+        resources: [
+          {
+            title: 'Java Web 习题与答题资料',
+            description: '前 12 章习题答案、大题预测与答题模板。',
+            status: '待核验',
+            files: [
+              {
+                title: 'Java Web 1-12 章大题预测与答题模板',
+                href: '/materials/javaweb/chapters-01-12-predicted-questions.pdf',
+                format: 'PDF',
+                role: '预测题',
+              },
+              {
+                title: 'Java Web 前 12 章课后习题答案',
+                href: '/materials/javaweb/chapters-01-12-exercise-answers.pdf',
+                format: 'PDF',
+                role: '习题答案',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  microcontroller: {
+    title: '单片机原理及应用',
+    directory: '/materials/microcontroller/',
+    categories: [
+      {
+        title: '知识点笔记',
+        description: '章节知识点、复习提纲和概念梳理。',
+        resources: [
+          {
+            title: 'STM32 课程复习资料',
+            description: 'STM32 微控制器章节知识点、考点解析与代码示例。',
+            status: '待核验',
+            files: [
+              {
+                title: 'STM32 微控制器期末考试与学习指南',
+                href: '/materials/microcontroller/stm32-final-exam-study-guide.pdf',
+                format: 'PDF',
+                role: '复习讲义',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: '实验资料',
+        description: '实验答案、实验环境、实验报告参考结构和调试记录。',
+        resources: [
+          {
+            title: 'STM32 实验复习资料',
+            description: 'STM32 实验一至实验九总结、代码解析与复习题整理。',
+            status: '待核验',
+            files: [
+              {
+                title: 'STM32 实验复习与期末开卷考试宝典',
+                href: '/materials/microcontroller/stm32-lab-final-exam-study-guide.pdf',
+                format: 'PDF',
+                role: '实验复习',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: '试题资料',
+        description: '试卷、练习题和对应答案放在同一个资料组中。',
+        resources: [
+          {
+            title: '嵌入式系统基础与实践习题资料',
+            description: '教材第 1 至 10 章课后习题、答案与考点解析。',
+            status: '待核验',
+            files: [
+              {
+                title: '嵌入式系统基础与实践课后习题及期末开卷宝典',
+                href: '/materials/microcontroller/embedded-systems-exercises-study-guide.pdf',
+                format: 'PDF',
+                role: '习题答案',
+              },
+            ],
+          },
+        ],
       },
     ],
   },

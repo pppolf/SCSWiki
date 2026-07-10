@@ -31,7 +31,7 @@ export function prepareAssistantIndex(
   error: AssistantIndexError | null;
   info: AssistantIndexInfo;
 } {
-  const chunks = toRuntimeChunks(index.chunks);
+  const chunks = toRuntimeChunks(index.chunks.filter((chunk) => chunk.status === 'active'));
   const actualDimensions = inferEmbeddingDimensions(index, chunks);
   const info: AssistantIndexInfo = {
     chunkCount: index.chunkCount,

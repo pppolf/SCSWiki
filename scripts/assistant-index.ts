@@ -183,7 +183,9 @@ export function buildAssistantChunksForPage(
 export async function buildAssistantChunks(options: BuildChunksOptions = {}) {
   const docsRoot = options.docsRoot ?? path.resolve('docs');
   const pages = await readAssistantPages(docsRoot);
-  return pages.flatMap((page) => buildAssistantChunksForPage(page, options));
+  return pages
+    .filter((page) => page.status === 'active')
+    .flatMap((page) => buildAssistantChunksForPage(page, options));
 }
 
 function splitIntoSections(markdown: string) {
