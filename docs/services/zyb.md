@@ -5,7 +5,7 @@ category: services
 audience:
   - 本科生
 content_type: official-source
-status: needs-review
+status: active
 maintainers:
   - SCSWiki 维护组
 sources:
