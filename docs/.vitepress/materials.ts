@@ -826,7 +826,27 @@ export const courseMaterials = {
       {
         title: '实验资料',
         description: '实验答案、实验环境、实验报告参考结构和调试记录。',
-        resources: [],
+        resources: [
+          {
+            title: '2026 年 Web 前端设计技能实训',
+            description: '包含实训内容及要求和空白实训报告模板。',
+            status: '待核验',
+            files: [
+              {
+                title: 'Web 前端设计实训内容及要求',
+                href: '/materials/web-frontend/web-frontend-practicum-requirements-2026.pdf',
+                format: 'PDF',
+                role: '实训要求',
+              },
+              {
+                title: 'Web 前端设计实训报告模板',
+                href: '/materials/web-frontend/web-frontend-practicum-report-template-2026.pdf',
+                format: 'PDF',
+                role: '实训报告模板',
+              },
+            ],
+          },
+        ],
       },
       {
         title: '试题资料',
