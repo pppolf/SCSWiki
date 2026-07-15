@@ -33,7 +33,7 @@ sources: []
 | [离散数学](/materials/discrete-mathematics)        | 试题资料              | 活跃 |
 | [计算机操作系统](/materials/computer-os)           | 知识点笔记            | 活跃 |
 | [高等数学](/materials/advanced-math)               | 知识点笔记 / 试题资料 | 活跃 |
-| [C语言程序设计](/materials/c)                      | 试题资料              | 活跃 |
+| [C语言程序设计](/materials/c)                      | 实验资料 / 试题资料   | 活跃 |
 | [软件过程项目管理](/materials/software)            | 知识点笔记            | 活跃 |
 | [大学物理](/materials/physics)                     | 试题资料              | 活跃 |
 | [线性代数](/materials/linear-algebra)              | 试题资料              | 活跃 |

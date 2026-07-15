@@ -435,7 +435,33 @@ export const courseMaterials = {
       {
         title: '实验资料',
         description: '实验答案、实验环境、实验报告参考结构和调试记录。',
-        resources: [],
+        resources: [
+          {
+            title: '2026 年程序设计技能实训 1',
+            description: '包含学生成绩管理系统任务书、实训手册模板及项目讲解与参考实现。',
+            status: '待核验',
+            files: [
+              {
+                title: '程序设计技能实训 1 任务书',
+                href: '/materials/c/programming-practicum-1-task-book-2026.docx',
+                format: 'DOCX',
+                role: '实训任务书',
+              },
+              {
+                title: '程序设计技能实训 1 实训手册',
+                href: '/materials/c/programming-practicum-1-training-manual-2026.docx',
+                format: 'DOCX',
+                role: '实训手册',
+              },
+              {
+                title: '学生成绩管理系统项目讲解',
+                href: '/materials/c/student-grade-management-system-project-guide-2026.pptx',
+                format: 'PPTX',
+                role: '项目讲解与参考实现',
+              },
+            ],
+          },
+        ],
       },
       {
         title: '试题资料',
