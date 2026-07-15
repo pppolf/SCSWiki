@@ -126,6 +126,7 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: '软件过程项目管理', link: '/materials/software' },
         { text: '大学物理', link: '/materials/physics' },
         { text: '线性代数', link: '/materials/linear-algebra' },
+        { text: 'Web前端程序设计', link: '/materials/web-frontend' },
         { text: 'Java Web应用开发', link: '/materials/javaweb' },
         { text: '单片机原理及应用', link: '/materials/microcontroller' },
         { text: '习近平新时代中国特色社会主义思想', link: '/materials/xjp' },
