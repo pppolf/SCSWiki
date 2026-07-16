@@ -41,7 +41,7 @@ export const courseMaterials = {
           {
             title: '华科计算机组成原理实验参考资源',
             description: '包含 MIPS CPU、单总线 CPU、存储系统和运算器设计等实验参考文件。',
-            status: '待核验',
+            status: '已核验',
             files: [
               {
                 title: '实验参考资源包',
@@ -439,24 +439,24 @@ export const courseMaterials = {
           {
             title: '2026 年程序设计技能实训 1',
             description: '包含学生成绩管理系统任务书、实训手册模板及项目讲解与参考实现。',
-            status: '待核验',
+            status: '已核验',
             files: [
               {
                 title: '程序设计技能实训 1 任务书',
-                href: '/materials/c/programming-practicum-1-task-book-2026.docx',
-                format: 'DOCX',
+                href: '/materials/c/programming-practicum-1-task-book-2026.pdf',
+                format: 'PDF',
                 role: '实训任务书',
               },
               {
                 title: '程序设计技能实训 1 实训手册',
-                href: '/materials/c/programming-practicum-1-training-manual-2026.docx',
-                format: 'DOCX',
+                href: '/materials/c/programming-practicum-1-training-manual-2026.pdf',
+                format: 'PDF',
                 role: '实训手册',
               },
               {
                 title: '学生成绩管理系统项目讲解',
-                href: '/materials/c/student-grade-management-system-project-guide-2026.pptx',
-                format: 'PPTX',
+                href: '/materials/c/student-grade-management-system-project-guide-2026.pdf',
+                format: 'PDF',
                 role: '项目讲解与参考实现',
               },
             ],
@@ -830,7 +830,7 @@ export const courseMaterials = {
           {
             title: '2026 年 Web 前端设计技能实训',
             description: '包含实训内容及要求和空白实训报告模板。',
-            status: '待核验',
+            status: '已核验',
             files: [
               {
                 title: 'Web 前端设计实训内容及要求',
@@ -902,7 +902,7 @@ export const courseMaterials = {
           {
             title: 'Java Web 习题与答题资料',
             description: '前 12 章习题答案、大题预测与答题模板。',
-            status: '待核验',
+            status: '已核验',
             files: [
               {
                 title: 'Java Web 1-12 章大题预测与答题模板',
@@ -933,7 +933,7 @@ export const courseMaterials = {
           {
             title: 'STM32 课程复习资料',
             description: 'STM32 微控制器章节知识点、考点解析与代码示例。',
-            status: '待核验',
+            status: '已核验',
             files: [
               {
                 title: 'STM32 微控制器期末考试与学习指南',
@@ -952,7 +952,7 @@ export const courseMaterials = {
           {
             title: 'STM32 实验复习资料',
             description: 'STM32 实验一至实验九总结、代码解析与复习题整理。',
-            status: '待核验',
+            status: '已核验',
             files: [
               {
                 title: 'STM32 实验复习与期末开卷考试宝典',
@@ -971,7 +971,7 @@ export const courseMaterials = {
           {
             title: '嵌入式系统基础与实践习题资料',
             description: '教材第 1 至 10 章课后习题、答案与考点解析。',
-            status: '待核验',
+            status: '已核验',
             files: [
               {
                 title: '嵌入式系统基础与实践课后习题及期末开卷宝典',
