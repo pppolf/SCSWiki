@@ -138,6 +138,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       text: '办事指南',
       items: [
         { text: '总览', link: '/services/' },
+        { text: '体育课转修保健课', link: '/services/health-class' },
         { text: '奖助学金', link: '/services/scholarship' },
         { text: '保研（推荐免试研究生）', link: '/services/postgraduate' },
         { text: '卓越班', link: '/services/zyb' },
