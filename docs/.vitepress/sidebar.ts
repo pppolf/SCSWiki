@@ -6,6 +6,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       text: '新生专题',
       items: [
         { text: '新生报到', link: '/start/' },
+        { text: '行署校区地图', link: '/start/xingshu-campus-map' },
         { text: '军训专题', link: '/start/jx' },
         { text: '作息安排', link: '/start/sh' },
         { text: '学院信息', link: '/start/info' },
