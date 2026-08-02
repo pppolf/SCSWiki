@@ -7,10 +7,12 @@ config:
   MD033:
     allowed_elements:
       - AutoMergeTable
+      - ClientOnly
       - ContentMeta
       - ElectiveCourseTable
       - HomePage
       - MaterialResourceList
+      - XingshuCampusMap
       - a
       - div
       - details

@@ -1,5 +1,6 @@
 import DefaultTheme from 'vitepress/theme';
 import type { Theme } from 'vitepress';
+import { defineAsyncComponent } from 'vue';
 import AutoMergeTable from './components/AutoMergeTable.vue';
 import ContentMeta from './components/ContentMeta.vue';
 import ElectiveCourseTable from './components/ElectiveCourseTable.vue';
@@ -18,5 +19,9 @@ export default {
     app.component('ElectiveCourseTable', ElectiveCourseTable);
     app.component('HomePage', HomePage);
     app.component('MaterialResourceList', MaterialResourceList);
+    app.component(
+      'XingshuCampusMap',
+      defineAsyncComponent(() => import('./components/XingshuCampusMap.vue')),
+    );
   },
 } satisfies Theme;

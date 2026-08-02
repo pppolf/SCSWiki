@@ -24,6 +24,7 @@ sources:
 具体新生板块专题如下：
 
 - [军训专题](/start/jx)
+- [行署校区三维地图](/start/xingshu-campus-map)
 - [作息安排](/start/sh)
 - [学院信息](/start/info)
 - [学院组织](/start/org)

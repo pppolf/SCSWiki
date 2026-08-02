@@ -1,0 +1,689 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "cwnu-xingshu",
+  "releaseId": "s14-site-draft",
+  "status": "needs-review",
+  "generatedAt": "2026-08-02T13:19:46.602Z",
+  "coordinateSystem": {
+    "unit": "m",
+    "axes": {
+      "x": "east",
+      "y": "up",
+      "z": "south"
+    },
+    "north": [0, 0, -1],
+    "logicalGroundZ": 0,
+    "sourceCrs": "EPSG:32648",
+    "originWgs84": {
+      "longitude": 106.0847768,
+      "latitude": 30.7996681,
+      "height": null
+    }
+  },
+  "presentation": {
+    "style": "xuan-paper-ink-wash",
+    "renderedRoofCards": false
+  },
+  "model": {
+    "uri": "xingshu-campus.glb",
+    "bytes": 1638460,
+    "sha256": "618ce2affd4891f355164559a1773b9aec8e8de8b3bbbbfca8ba8652e19c2a79",
+    "triangles": 20288,
+    "nodes": 50,
+    "meshes": 50,
+    "featureCount": 42
+  },
+  "semanticLayers": [
+    {
+      "id": "campus-ground",
+      "nodeName": "layer__campus-ground",
+      "label": "校园地面",
+      "triangles": 76,
+      "sourceWayCount": 1
+    },
+    {
+      "id": "grass",
+      "nodeName": "layer__grass",
+      "label": "OSM 外围绿地",
+      "triangles": 20,
+      "sourceWayCount": 1
+    },
+    {
+      "id": "internal-roads",
+      "nodeName": "layer__internal-roads",
+      "label": "校内车行道路",
+      "triangles": 5820,
+      "sourceWayCount": 32
+    },
+    {
+      "id": "footpaths",
+      "nodeName": "layer__footpaths",
+      "label": "步行路与台阶",
+      "triangles": 912,
+      "sourceWayCount": 9
+    },
+    {
+      "id": "external-roads",
+      "nodeName": "layer__external-roads",
+      "label": "校园外围道路",
+      "triangles": 3924,
+      "sourceWayCount": 33
+    },
+    {
+      "id": "water",
+      "nodeName": "layer__water",
+      "label": "水体与游泳池",
+      "triangles": 72,
+      "sourceWayCount": 2
+    },
+    {
+      "id": "sports",
+      "nodeName": "layer__sports",
+      "label": "运动场地",
+      "triangles": 100,
+      "sourceWayCount": 7
+    }
+  ],
+  "features": [
+    {
+      "id": "xs-bldg-0001",
+      "name": "图书馆",
+      "ownerTile": "r05-c02",
+      "modelGrade": "M2",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "B",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [-157.46591770120432, 280.75360918347724]
+    },
+    {
+      "id": "xs-bldg-0002",
+      "name": "南校门内侧小型多层建筑候选",
+      "ownerTile": "r08-c04",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "candidate",
+      "centerLocalEN": [-13.54002607561415, 95.59155623987317]
+    },
+    {
+      "id": "xs-bldg-0003",
+      "name": "东五公寓",
+      "ownerTile": "r05-c07",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [145.9345656922087, 309.921645791037]
+    },
+    {
+      "id": "xs-bldg-0004",
+      "name": "东四公寓",
+      "ownerTile": "r05-c07",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [133.81280018686084, 270.90958694100846]
+    },
+    {
+      "id": "xs-bldg-0005",
+      "name": "东三楼",
+      "ownerTile": "r06-c07",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [129.59396817255765, 238.07333112042397]
+    },
+    {
+      "id": "xs-bldg-0006",
+      "name": "东二公寓",
+      "ownerTile": "r06-c06",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [121.87172679867945, 209.33192910684738]
+    },
+    {
+      "id": "xs-bldg-0007",
+      "name": "行署办公楼",
+      "ownerTile": "r05-c05",
+      "modelGrade": "M2",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [59.18877586213057, 271.24661045719404]
+    },
+    {
+      "id": "xs-bldg-0008",
+      "name": "教学楼",
+      "ownerTile": "r07-c05",
+      "modelGrade": "M2",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [33.14971476356284, 177.62634142656594]
+    },
+    {
+      "id": "xs-bldg-0009",
+      "name": "西三楼",
+      "ownerTile": "r06-c04",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [-21.543990044738166, 250.32649603311438]
+    },
+    {
+      "id": "xs-bldg-0010",
+      "name": "胡耀邦同志川北办公旧址",
+      "ownerTile": "r06-c05",
+      "modelGrade": "M2",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [29.648895755730337, 254.591506413999]
+    },
+    {
+      "id": "xs-bldg-0011",
+      "name": "川北行署主要领导办公房（东侧）",
+      "ownerTile": "r06-c06",
+      "modelGrade": "M2",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [77.93390629158239, 240.03812113660388]
+    },
+    {
+      "id": "xs-bldg-0012",
+      "name": "西五楼",
+      "ownerTile": "r04-c05",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [10.299776875704993, 352.78694562159944]
+    },
+    {
+      "id": "xs-bldg-0013",
+      "name": "西四楼",
+      "ownerTile": "r05-c04",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [-3.9090608159895055, 312.380378834554]
+    },
+    {
+      "id": "xs-bldg-0014",
+      "name": "浴池",
+      "ownerTile": "r04-c07",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [142.6156192853523, 383.9510638068896]
+    },
+    {
+      "id": "xs-bldg-0015",
+      "name": "第一学生食堂",
+      "ownerTile": "r04-c07",
+      "modelGrade": "M2",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [150.86623744318624, 348.2462541495398]
+    },
+    {
+      "id": "xs-bldg-0016",
+      "name": "行署礼堂",
+      "ownerTile": "r04-c06",
+      "modelGrade": "M2",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [86.37461781754973, 365.0704976609559]
+    },
+    {
+      "id": "xs-bldg-0017",
+      "name": "西二楼",
+      "ownerTile": "r06-c04",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [-30.631346794281853, 220.23634262406267]
+    },
+    {
+      "id": "xs-bldg-0018",
+      "name": "大学科技园",
+      "ownerTile": "r06-c01",
+      "modelGrade": "M2",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [-211.28023226719233, 226.271999325254]
+    },
+    {
+      "id": "xs-bldg-0019",
+      "name": "高职学院实训大楼",
+      "ownerTile": "r08-c03",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [-74.03408988999436, 73.17842331388965]
+    },
+    {
+      "id": "xs-bldg-0020",
+      "name": "西苑学生公寓",
+      "ownerTile": "r08-c03",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [-70.83978250975876, 116.0176295270988]
+    },
+    {
+      "id": "xs-bldg-0021",
+      "name": "东南片区两层红砖建筑候选",
+      "ownerTile": "r07-c06",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "B",
+        "roof": "C"
+      },
+      "verification": "candidate",
+      "centerLocalEN": [113.94059997308068, 174.01282573211938]
+    },
+    {
+      "id": "xs-bldg-0022",
+      "name": "东南片区大型组合建筑候选",
+      "ownerTile": "r08-c07",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "candidate",
+      "centerLocalEN": [189.31315037627064, 117.0619962241617]
+    },
+    {
+      "id": "xs-bldg-0023",
+      "name": "第二学生食堂",
+      "ownerTile": "r06-c07",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [193.2298765340238, 198.90051786520053]
+    },
+    {
+      "id": "xs-bldg-0024",
+      "name": "计算机中心",
+      "ownerTile": "r06-c03",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [-105.51518884543718, 244.8167998245141]
+    },
+    {
+      "id": "xs-bldg-0025",
+      "name": "校史陈列室",
+      "ownerTile": "r05-c03",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [-105.36142029674374, 275.69505931274034]
+    },
+    {
+      "id": "xs-bldg-0026",
+      "name": "体育馆",
+      "ownerTile": "r02-c02",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [-138.79951843293384, 467.1678650909259]
+    },
+    {
+      "id": "xs-bldg-0027",
+      "name": "校医院",
+      "ownerTile": "r03-c05",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [17.738632123087882, 387.70492278790334]
+    },
+    {
+      "id": "xs-bldg-0028",
+      "name": "北三公寓",
+      "ownerTile": "r03-c05",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [58.871306197130416, 429.4315132586582]
+    },
+    {
+      "id": "xs-bldg-0029",
+      "name": "北侧中轴东部组合建筑候选",
+      "ownerTile": "r02-c06",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "candidate",
+      "centerLocalEN": [101.2354705158246, 450.0885546946277]
+    },
+    {
+      "id": "xs-bldg-0030",
+      "name": "第二教学楼",
+      "ownerTile": "r07-c02",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [-182.70725241228502, 151.09381833148655]
+    },
+    {
+      "id": "xs-bldg-0031",
+      "name": "实训楼北侧附属房候选",
+      "ownerTile": "r07-c03",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "candidate",
+      "centerLocalEN": [-124.11829394934466, 132.81588420126354]
+    },
+    {
+      "id": "xs-bldg-0032",
+      "name": "车队",
+      "ownerTile": "r07-c02",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [-132.39404883283228, 166.0140942267608]
+    },
+    {
+      "id": "xs-bldg-0033",
+      "name": "西门侧八层建筑候选",
+      "ownerTile": "r05-c01",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "B",
+        "roof": "C"
+      },
+      "verification": "candidate",
+      "centerLocalEN": [-199.32311771984678, 316.5351569710765]
+    },
+    {
+      "id": "xs-bldg-0034",
+      "name": "礼堂北侧小型多层建筑候选",
+      "ownerTile": "r03-c05",
+      "modelGrade": "M1+",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "candidate",
+      "centerLocalEN": [55.44940298167057, 395.33086020476185]
+    },
+    {
+      "id": "xs-bldg-0035",
+      "name": "木工房",
+      "ownerTile": "r03-c04",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [-14.85, 421.66366666666664]
+    },
+    {
+      "id": "xs-bldg-0036",
+      "name": "锅炉房与老烟囱",
+      "ownerTile": "r03-c07",
+      "modelGrade": "M2",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "B",
+        "roof": "B"
+      },
+      "verification": "named",
+      "centerLocalEN": [170.46625, 381.231]
+    },
+    {
+      "id": "xs-bldg-0037",
+      "name": "西七楼",
+      "ownerTile": "r03-c03",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [-96.97975, 402.89475000000004]
+    },
+    {
+      "id": "xs-bldg-0038",
+      "name": "校一幢",
+      "ownerTile": "r04-c02",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [-160.93225, 359.539]
+    },
+    {
+      "id": "xs-bldg-0039",
+      "name": "校二幢",
+      "ownerTile": "r03-c02",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [-151.77519999999998, 442.57]
+    },
+    {
+      "id": "xs-bldg-0040",
+      "name": "西华师大宾馆",
+      "ownerTile": "r06-c01",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [-244.95683333333332, 191.03533333333334]
+    },
+    {
+      "id": "xs-bldg-0041",
+      "name": "国资楼",
+      "ownerTile": "r08-c05",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [50.208999999999996, 113.52283333333334]
+    },
+    {
+      "id": "xs-bldg-0042",
+      "name": "南三公寓",
+      "ownerTile": "r08-c06",
+      "modelGrade": "M1",
+      "status": "needs-review",
+      "confidence": {
+        "xy": "C",
+        "z": "C",
+        "roof": "C"
+      },
+      "verification": "named",
+      "centerLocalEN": [102.57249999999999, 106.29249999999999]
+    }
+  ],
+  "attribution": [
+    {
+      "name": "OpenStreetMap contributors",
+      "url": "https://www.openstreetmap.org/copyright",
+      "license": "Open Database License 1.0"
+    }
+  ],
+  "limitations": [
+    "学生维护的非官方白模，不是测绘成果，也不能代替校园导航或应急疏散图。",
+    "建筑名称、用途、轮廓与高度仍有待核验项；请以学校现场标识和正式通知为准。",
+    "模型不包含全景图片、功能图、校徽、个人信息或任何受限参考图层。"
+  ]
+}
