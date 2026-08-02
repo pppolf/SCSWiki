@@ -24,6 +24,21 @@ type SemanticLayer = {
   sourceWayCount: number;
 };
 
+type ReferenceMap = {
+  uri: string;
+  bytes: number;
+  sha256: string;
+  source: string;
+  defaultVisible: boolean;
+  imageSizePx: [number, number];
+  fitRmsM: number;
+  pixelToLocalAffine: {
+    x: [number, number, number];
+    y: [number, number, number];
+  };
+  campusBoundaryLocalEN: Array<[number, number]>;
+};
+
 type CampusManifest = {
   status: string;
   presentation: {
@@ -36,6 +51,7 @@ type CampusManifest = {
     triangles: number;
     featureCount: number;
   };
+  referenceMap?: ReferenceMap;
   semanticLayers: SemanticLayer[];
   features: CampusFeature[];
   attribution: Array<{
@@ -57,6 +73,9 @@ const isFullscreen = ref(false);
 const showGround = ref(true);
 const showCampusRoads = ref(true);
 const showOuterRoads = ref(true);
+const showReferenceMap = ref(false);
+const referenceLoading = ref(false);
+const referenceError = ref('');
 
 const features = computed(() =>
   [...(manifest.value?.features ?? [])].sort((left, right) =>
@@ -80,6 +99,9 @@ let animationFrame = 0;
 let modelRoot: THREE.Object3D | undefined;
 let campusBounds: THREE.Box3 | undefined;
 let selectionHelper: THREE.Box3Helper | undefined;
+let manifestAssetUrl: URL | undefined;
+let referenceMapMesh: THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial> | undefined;
+let referenceMapTexture: THREE.Texture | undefined;
 const featureRoots = new Map<string, THREE.Object3D>();
 const semanticNodes = new Map<string, THREE.Object3D>();
 const selectableMeshes: THREE.Mesh[] = [];
@@ -180,6 +202,111 @@ function applyLayerVisibility() {
   if (outerRoads) outerRoads.visible = showOuterRoads.value;
 }
 
+function pointInBoundary(point: [number, number], boundary: Array<[number, number]>) {
+  let inside = false;
+  for (let index = 0, previous = boundary.length - 1; index < boundary.length; previous = index++) {
+    const [currentX, currentY] = boundary[index];
+    const [previousX, previousY] = boundary[previous];
+    const crosses =
+      currentY > point[1] !== previousY > point[1] &&
+      point[0] <
+        ((previousX - currentX) * (point[1] - currentY)) / (previousY - currentY) + currentX;
+    if (crosses) inside = !inside;
+  }
+  return inside;
+}
+
+async function createReferenceMap() {
+  const reference = manifest.value?.referenceMap;
+  if (!reference || !manifestAssetUrl || !renderer || !scene) return undefined;
+
+  const textureUrl = new URL(reference.uri, manifestAssetUrl).href;
+  const texture = await new THREE.TextureLoader().loadAsync(textureUrl);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+  referenceMapTexture = texture;
+
+  const positions: number[] = [];
+  const uvs: number[] = [];
+  const cells = 28;
+  const [width, height] = reference.imageSizePx;
+  const mapPixel = (pixelX: number, pixelY: number): [number, number] => [
+    reference.pixelToLocalAffine.x[0] * pixelX +
+      reference.pixelToLocalAffine.x[1] * pixelY +
+      reference.pixelToLocalAffine.x[2],
+    reference.pixelToLocalAffine.y[0] * pixelX +
+      reference.pixelToLocalAffine.y[1] * pixelY +
+      reference.pixelToLocalAffine.y[2],
+  ];
+
+  for (let row = 0; row < cells; row += 1) {
+    for (let column = 0; column < cells; column += 1) {
+      const x0 = (column / cells) * width;
+      const x1 = ((column + 1) / cells) * width;
+      const y0 = (row / cells) * height;
+      const y1 = ((row + 1) / cells) * height;
+      const center = mapPixel((x0 + x1) / 2, (y0 + y1) / 2);
+      if (!pointInBoundary(center, reference.campusBoundaryLocalEN)) continue;
+
+      const corners: Array<[number, number]> = [
+        [x0, y0],
+        [x1, y0],
+        [x1, y1],
+        [x0, y1],
+      ];
+      const mapped = corners.map(([pixelX, pixelY]) => mapPixel(pixelX, pixelY));
+      for (const cornerIndex of [0, 1, 2, 0, 2, 3]) {
+        const [localX, localNorth] = mapped[cornerIndex];
+        const [pixelX, pixelY] = corners[cornerIndex];
+        positions.push(localX, 0.16, -localNorth);
+        uvs.push(pixelX / width, 1 - pixelY / height);
+      }
+    }
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
+  const material = new THREE.MeshBasicMaterial({
+    map: texture,
+    opacity: 0.56,
+    polygonOffset: true,
+    polygonOffsetFactor: -3,
+    polygonOffsetUnits: -3,
+    side: THREE.DoubleSide,
+    transparent: true,
+    depthTest: true,
+    depthWrite: false,
+  });
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.name = 'reference-campus-map';
+  mesh.renderOrder = 12;
+  mesh.visible = false;
+  scene.add(mesh);
+  return mesh;
+}
+
+async function applyReferenceMapVisibility() {
+  if (!showReferenceMap.value) {
+    if (referenceMapMesh) referenceMapMesh.visible = false;
+    return;
+  }
+  if (!manifest.value?.referenceMap || !scene) return;
+
+  referenceLoading.value = true;
+  referenceError.value = '';
+  try {
+    referenceMapMesh ??= await createReferenceMap();
+    if (!referenceMapMesh) throw new Error('参考图配置不完整');
+    referenceMapMesh.visible = true;
+  } catch (error) {
+    referenceError.value = error instanceof Error ? error.message : '参考图加载失败';
+    showReferenceMap.value = false;
+  } finally {
+    referenceLoading.value = false;
+  }
+}
+
 function resizeRenderer() {
   if (!host.value || !renderer || !camera) return;
   const width = Math.max(1, host.value.clientWidth);
@@ -228,9 +355,11 @@ async function initializeMap() {
   if (!host.value) return;
   try {
     const manifestUrl = new URL(withBase('/maps/xingshu-campus/manifest.json'), location.href);
+    manifestAssetUrl = manifestUrl;
     const response = await fetch(manifestUrl);
     if (!response.ok) throw new Error(`地图清单加载失败（HTTP ${response.status}）`);
     manifest.value = (await response.json()) as CampusManifest;
+    showReferenceMap.value = manifest.value.referenceMap?.defaultVisible ?? false;
     if (manifest.value.presentation.renderedRoofCards) {
       throw new Error('地图包意外包含屋顶字牌，已停止加载。');
     }
@@ -334,6 +463,12 @@ function disposeMap() {
   }
   controls?.dispose();
   if (selectionHelper) disposeHelper(selectionHelper);
+  if (referenceMapMesh) {
+    scene?.remove(referenceMapMesh);
+    referenceMapMesh.geometry.dispose();
+    referenceMapMesh.material.dispose();
+  }
+  referenceMapTexture?.dispose();
   for (const outline of generatedOutlines) outline.geometry.dispose();
   outlineMaterial.dispose();
   modelRoot?.traverse((object) => {
@@ -346,6 +481,7 @@ function disposeMap() {
 }
 
 watch([showGround, showCampusRoads, showOuterRoads], applyLayerVisibility);
+watch(showReferenceMap, () => void applyReferenceMapVisibility());
 onMounted(initializeMap);
 onBeforeUnmount(disposeMap);
 </script>
@@ -408,7 +544,16 @@ onBeforeUnmount(disposeMap);
         <label><input v-model="showGround" type="checkbox" /> 地面与水体</label>
         <label><input v-model="showCampusRoads" type="checkbox" /> 校内道路</label>
         <label><input v-model="showOuterRoads" type="checkbox" /> 外围道路</label>
+        <label title="默认关闭，仅供目视参考">
+          <input
+            v-model="showReferenceMap"
+            type="checkbox"
+            :disabled="!isReady || referenceLoading || !manifest?.referenceMap"
+          />
+          {{ referenceLoading ? '参考原图加载中' : '参考原图' }}
+        </label>
       </fieldset>
+      <span v-if="referenceError" class="xingshu-map-layer-error">{{ referenceError }}</span>
       <div class="xingshu-map-stats">
         <span>{{ manifest?.model.featureCount ?? 0 }} 栋</span>
         <span>{{ manifest?.model.triangles.toLocaleString() ?? '—' }} 三角面</span>
@@ -667,6 +812,17 @@ onBeforeUnmount(disposeMap);
 
 .xingshu-map-layers input {
   accent-color: var(--map-seal);
+}
+
+.xingshu-map-layers input:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.xingshu-map-layer-error {
+  color: var(--map-seal);
+  font-size: 10px;
+  font-weight: 700;
 }
 
 .xingshu-map-stats {
