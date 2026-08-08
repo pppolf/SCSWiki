@@ -30,6 +30,7 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: 'C语言程序设计', link: '/study/c' },
         { text: 'Web 前端设计', link: '/study/web-frontend' },
         { text: '网络空间安全导论', link: '/study/cybersecurity-introduction' },
+        { text: '计算思维', link: '/study/computational-thinking' },
         { text: '数据结构', link: '/study/ds' },
         { text: '离散数学', link: '/study/ls' },
         { text: '计算机组成原理', link: '/study/jz' },
