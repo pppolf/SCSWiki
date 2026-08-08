@@ -24,6 +24,7 @@ sources: []
 - [网络空间安全导论](/study/cybersecurity-introduction)
 - [计算思维](/study/computational-thinking)
 - [计算机基本技能](/study/computer-basic-skills)
+- [高等数学](/study/advanced-mathematics)
 - [数据结构](/study/ds)
 - [离散数学](/study/ls)
 - [计算机组成原理](/study/jz)
