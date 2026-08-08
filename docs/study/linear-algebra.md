@@ -4,7 +4,7 @@ description: 《线性代数》教材及配套学习辅导信息与内容简介
 category: study
 audience:
   - 学生
-content_type: verified
+content_type: official-source
 status: active
 maintainers:
   - SCSWiki 维护组
@@ -14,6 +14,8 @@ sources:
   - name: 山东科技大学《线性代数》应用教学案例及参考文献
     url: https://sxy.sdust.edu.cn/__local/3/94/6C/5A989855C6DBBE4B55E1C35389C_07956BD4_48CA2D.pdf
 ---
+
+<ContentMeta />
 
 # 线性代数
 

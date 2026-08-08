@@ -11,6 +11,8 @@ maintainers:
 sources: []
 ---
 
+<ContentMeta />
+
 # 计算机组成原理
 
 正在编写中

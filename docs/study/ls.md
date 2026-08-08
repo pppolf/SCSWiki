@@ -11,6 +11,8 @@ maintainers:
 sources: []
 ---
 
+<ContentMeta />
+
 # 离散数学
 
 正在编写中

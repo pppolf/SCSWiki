@@ -13,6 +13,8 @@ sources:
     url: https://phei.com.cn/module/goods/wssd_content.jsp?bookid=57600
 ---
 
+<ContentMeta />
+
 # 计算思维
 
 ## 教材信息

@@ -13,6 +13,8 @@ sources:
     url: https://www.ryjiaoyu.com/book/details/46208
 ---
 
+<ContentMeta />
+
 # Web 前端设计
 
 ## 教材信息

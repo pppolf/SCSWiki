@@ -15,6 +15,8 @@ sources:
     url: https://xuanshu.hep.com.cn/front/h5Mobile/bookDetails?bookId=6a060102e119ac9729026377
 ---
 
+<ContentMeta />
+
 # 高等数学
 
 本页收录同济大学数学科学学院编《高等数学》第八版上册和下册。

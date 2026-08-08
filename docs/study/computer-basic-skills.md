@@ -13,6 +13,8 @@ sources:
     url: https://phei.com.cn/module/goods/wssd_content.jsp?bookid=61970
 ---
 
+<ContentMeta />
+
 # 计算机基本技能
 
 ## 教材信息
