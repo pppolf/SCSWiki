@@ -2240,3 +2240,104 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+.vp-doc .c-textbook-profile {
+  align-items: start;
+  background: var(--scs-soft-bg);
+  border: 1px solid var(--scs-line);
+  border-radius: 8px;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: minmax(190px, 260px) minmax(0, 1fr);
+  margin: 20px 0 32px;
+  padding: 24px;
+}
+
+.vp-doc .c-textbook-profile__cover {
+  margin: 0;
+  text-align: center;
+}
+
+.vp-doc .c-textbook-profile__cover img {
+  background: #fff;
+  border: 1px solid var(--scs-line);
+  border-radius: 4px;
+  box-shadow: 0 12px 28px rgb(18 35 52 / 14%);
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-width: 260px;
+  width: 100%;
+}
+
+.vp-doc .c-textbook-profile__cover p {
+  color: var(--scs-muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 12px 0 0;
+}
+
+.vp-doc .c-textbook-profile__heading {
+  border-bottom: 1px solid var(--scs-line);
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+}
+
+.vp-doc .c-textbook-profile__heading strong {
+  color: var(--scs-text);
+  display: block;
+  font-size: 22px;
+  line-height: 1.45;
+}
+
+.vp-doc .c-textbook-profile__heading span {
+  color: var(--scs-muted);
+  display: block;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.vp-doc .c-textbook-metadata {
+  display: grid;
+  gap: 14px 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.vp-doc .c-textbook-metadata__item {
+  min-width: 0;
+}
+
+.vp-doc .c-textbook-metadata__item span {
+  color: var(--scs-muted);
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  margin-bottom: 3px;
+}
+
+.vp-doc .c-textbook-metadata__item strong {
+  color: var(--scs-text);
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .vp-doc .c-textbook-profile {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .vp-doc .c-textbook-profile__cover img {
+    max-width: 230px;
+  }
+}
+
+@media (max-width: 420px) {
+  .vp-doc .c-textbook-metadata {
+    grid-template-columns: 1fr;
+  }
+}
