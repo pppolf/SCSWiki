@@ -25,6 +25,7 @@ sources: []
 - [计算思维](/study/computational-thinking)
 - [计算机基本技能](/study/computer-basic-skills)
 - [高等数学](/study/advanced-mathematics)
+- [线性代数](/study/linear-algebra)
 - [数据结构](/study/ds)
 - [离散数学](/study/ls)
 - [计算机组成原理](/study/jz)

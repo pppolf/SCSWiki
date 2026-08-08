@@ -33,6 +33,7 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: '计算思维', link: '/study/computational-thinking' },
         { text: '计算机基本技能', link: '/study/computer-basic-skills' },
         { text: '高等数学', link: '/study/advanced-mathematics' },
+        { text: '线性代数', link: '/study/linear-algebra' },
         { text: '数据结构', link: '/study/ds' },
         { text: '离散数学', link: '/study/ls' },
         { text: '计算机组成原理', link: '/study/jz' },
