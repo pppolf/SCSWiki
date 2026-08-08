@@ -6,7 +6,7 @@ audience:
   - 本科新生
   - 行署校区学生
 content_type: experience
-status: needs-review
+status: active
 maintainers:
   - SCSWiki 维护组
 sources:

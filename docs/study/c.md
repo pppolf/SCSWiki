@@ -13,6 +13,8 @@ sources:
     url: https://xuanshu.hep.com.cn/front/book/findBookDetails?bookId=61f2d2b4938b7cc2960ee599
 ---
 
+<ContentMeta />
+
 # C 语言程序设计
 
 ## 教材信息
