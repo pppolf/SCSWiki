@@ -64,6 +64,7 @@ sources:
 
 ### 学院与发展
 
+- [程序设计语言导览](/start/programming-languages)
 - [学院信息](/start/info)
 - [学院组织](/start/org)
 - [国（境）外交流项目](/start/international-exchange)

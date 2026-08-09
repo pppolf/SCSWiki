@@ -17,6 +17,7 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: '作息安排', link: '/start/sh' },
         { text: '学院信息', link: '/start/info' },
         { text: '学院组织', link: '/start/org' },
+        { text: '程序设计语言导览', link: '/start/programming-languages' },
         { text: '国（境）外交流', link: '/start/international-exchange' },
         { text: '常见问题', link: '/start/faq' },
       ],
