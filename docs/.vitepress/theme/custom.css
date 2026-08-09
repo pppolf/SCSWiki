@@ -994,15 +994,6 @@
   width: 100%;
 }
 
-@media (max-width: 768px) {
-  .vp-doc._start_programming-languages table {
-    display: block;
-    max-width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-}
-
 .vp-doc code {
   border-radius: 3px;
 }
@@ -2362,5 +2353,540 @@
   .vp-doc .c-textbook-metadata,
   .vp-doc .textbook-metadata {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Programming languages guide */
+
+html.has-programming-language-guide {
+  scroll-padding-top: calc(var(--vp-nav-height) + 22px);
+}
+
+.programming-language-nav {
+  background: color-mix(in srgb, var(--vp-c-bg) 96%, transparent);
+  border-right: 1px solid var(--vp-c-divider);
+  box-sizing: border-box;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 26px 22px 48px 28px;
+  position: fixed;
+  top: var(--vp-nav-height);
+  width: 244px;
+  z-index: 20;
+}
+
+.programming-language-nav__title {
+  color: var(--vp-c-text-1);
+  font-size: 14px;
+  font-weight: 700;
+  margin: 4px 0 12px;
+}
+
+.programming-language-nav__link {
+  align-items: center;
+  border-radius: 8px;
+  color: var(--vp-c-text-2);
+  display: flex;
+  font-size: 14px;
+  gap: 10px;
+  margin: 2px 0;
+  min-height: 38px;
+  padding: 5px 10px;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+
+.programming-language-nav__link:hover {
+  background: var(--vp-c-default-soft);
+  color: var(--vp-c-text-1);
+}
+
+.programming-language-nav__link.is-active {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  font-weight: 650;
+}
+
+.programming-language-nav__icon {
+  align-items: center;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 7px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 26px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 26px;
+}
+
+.programming-language-nav__fallback {
+  align-items: center;
+  background: var(--language-color);
+  color: #fff;
+  display: flex;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 9px;
+  font-weight: 800;
+  inset: 0;
+  justify-content: center;
+  letter-spacing: -0.06em;
+  position: absolute;
+}
+
+.programming-language-nav__icon img {
+  height: 78%;
+  object-fit: contain;
+  position: relative;
+  width: 78%;
+  z-index: 1;
+}
+
+.programming-language-nav-toggle,
+.programming-language-nav-backdrop {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  html.has-programming-language-guide .VPDoc {
+    padding-left: 244px;
+  }
+
+  html.has-programming-language-guide .VPDoc .container {
+    max-width: 1180px;
+  }
+}
+
+.vp-doc._start_programming-languages {
+  color: var(--vp-c-text-1);
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'PingFang SC',
+    'Microsoft YaHei',
+    Arial,
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.vp-doc._start_programming-languages h1 {
+  color: var(--vp-c-text-1);
+  font-size: 36px;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+
+.vp-doc._start_programming-languages h1 + p {
+  color: var(--vp-c-text-2);
+  font-size: 17px;
+  line-height: 1.8;
+  margin: 0 0 24px;
+}
+
+.vp-doc._start_programming-languages .custom-block.tip {
+  background: var(--vp-c-brand-soft);
+  border: 0;
+  border-left: 4px solid var(--vp-c-brand-1);
+  border-radius: 8px;
+  color: var(--vp-c-text-2);
+  padding: 14px 16px;
+}
+
+.vp-doc._start_programming-languages .custom-block.tip .custom-block-title {
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc._start_programming-languages .content-meta {
+  margin-bottom: 52px;
+  margin-top: 26px;
+}
+
+.vp-doc._start_programming-languages
+  h2:is(
+    #typescript,
+    #python,
+    #javascript,
+    #java,
+    #csharp,
+    #php,
+    #bash,
+    #cpp,
+    #go,
+    #c,
+    #rust,
+    #kotlin,
+    #ruby,
+    #swift,
+    #dart
+  ) {
+  align-items: center;
+  border-top: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
+  display: flex;
+  font-size: 29px;
+  gap: 13px;
+  letter-spacing: -0.018em;
+  line-height: 1.35;
+  margin: 12px 0 4px;
+  padding-top: 54px;
+}
+
+.vp-doc._start_programming-languages h2#typescript {
+  border-top: 0;
+  padding-top: 6px;
+}
+
+.vp-doc._start_programming-languages
+  h2:is(
+    #typescript,
+    #python,
+    #javascript,
+    #java,
+    #csharp,
+    #php,
+    #bash,
+    #cpp,
+    #go,
+    #c,
+    #rust,
+    #kotlin,
+    #ruby,
+    #swift,
+    #dart
+  )::before {
+  background-color: var(--vp-c-bg-soft);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 78%;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  content: '';
+  flex: 0 0 auto;
+  height: 42px;
+  width: 42px;
+}
+
+.vp-doc._start_programming-languages h2#typescript::before {
+  background-image: url('/images/programming-languages/typescript.svg');
+}
+
+.vp-doc._start_programming-languages h2#python::before {
+  background-image: url('/images/programming-languages/python.svg');
+}
+
+.vp-doc._start_programming-languages h2#javascript::before {
+  background-image: url('/images/programming-languages/javascript.svg');
+}
+
+.vp-doc._start_programming-languages h2#java::before {
+  background-image: url('/images/programming-languages/java.svg');
+}
+
+.vp-doc._start_programming-languages h2#csharp::before {
+  background-image: url('/images/programming-languages/csharp.svg');
+}
+
+.vp-doc._start_programming-languages h2#php::before {
+  background-image: url('/images/programming-languages/php.svg');
+}
+
+.vp-doc._start_programming-languages h2#bash::before {
+  background-image: url('/images/programming-languages/bash.svg');
+}
+
+.vp-doc._start_programming-languages h2#cpp::before {
+  background-image: url('/images/programming-languages/cpp.svg');
+}
+
+.vp-doc._start_programming-languages h2#go::before {
+  background-image: url('/images/programming-languages/go.svg');
+}
+
+.vp-doc._start_programming-languages h2#c::before {
+  background-image: url('/images/programming-languages/c.svg');
+}
+
+.vp-doc._start_programming-languages h2#rust::before {
+  background-image: url('/images/programming-languages/rust.svg');
+}
+
+.vp-doc._start_programming-languages h2#kotlin::before {
+  background-image: url('/images/programming-languages/kotlin.svg');
+}
+
+.vp-doc._start_programming-languages h2#ruby::before {
+  background-image: url('/images/programming-languages/ruby.svg');
+}
+
+.vp-doc._start_programming-languages h2#swift::before {
+  background-image: url('/images/programming-languages/swift.svg');
+}
+
+.vp-doc._start_programming-languages h2#dart::before {
+  background-image: url('/images/programming-languages/dart.svg');
+}
+
+.vp-doc._start_programming-languages
+  h2:is(
+    #typescript,
+    #python,
+    #javascript,
+    #java,
+    #csharp,
+    #php,
+    #bash,
+    #cpp,
+    #go,
+    #c,
+    #rust,
+    #kotlin,
+    #ruby,
+    #swift,
+    #dart
+  )
+  + blockquote {
+  border-left: 0;
+  color: color-mix(in srgb, var(--vp-c-text-2) 86%, var(--vp-c-brand-1) 14%);
+  font-family: 'STKaiti', 'KaiTi', '楷体', 'FZKai-Z03', cursive;
+  font-size: 18px;
+  font-style: italic;
+  letter-spacing: 0.025em;
+  line-height: 1.75;
+  margin: 3px 0 22px 55px;
+  padding: 0;
+  transform: rotate(-0.18deg);
+}
+
+.vp-doc._start_programming-languages h2 + blockquote > p {
+  color: inherit;
+  margin: 0;
+}
+
+.vp-doc._start_programming-languages p {
+  line-height: 1.9;
+  margin: 15px 0;
+}
+
+.vp-doc._start_programming-languages p code {
+  background: var(--vp-c-bg-soft);
+  border-radius: 4px;
+  color: var(--vp-c-brand-1);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  padding: 2px 5px;
+}
+
+.vp-doc._start_programming-languages .custom-block.info {
+  background: var(--vp-c-bg-alt);
+  border: 0;
+  border-left: 3px solid var(--vp-c-brand-1);
+  border-radius: 0 9px 9px 0;
+  margin: 21px 0 23px;
+  padding: 15px 18px;
+}
+
+.vp-doc._start_programming-languages .custom-block.info .custom-block-title {
+  color: var(--vp-c-text-1);
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 0 0 7px;
+}
+
+.vp-doc._start_programming-languages .custom-block.info p {
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+.vp-doc._start_programming-languages .custom-block.info + p {
+  align-items: baseline;
+  color: var(--vp-c-text-2);
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 9px;
+  margin: 21px 0 11px;
+}
+
+.vp-doc._start_programming-languages .custom-block.info + p strong {
+  color: var(--vp-c-text-3);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.vp-doc._start_programming-languages div[class^='language-'] {
+  --shiki-light-bg: #1e1e20;
+  --shiki-dark-bg: #0e0e10;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 55%, transparent);
+  border-radius: 10px;
+  background: var(--shiki-light-bg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  margin: 22px 0 38px;
+  overflow: hidden;
+}
+
+.dark .vp-doc._start_programming-languages div[class^='language-'] {
+  background: var(--shiki-dark-bg);
+}
+
+.vp-doc._start_programming-languages div[class^='language-'] pre {
+  background: inherit !important;
+}
+
+.vp-doc._start_programming-languages div[class^='language-'] .vp-code span {
+  color: var(--shiki-dark) !important;
+}
+
+.vp-doc._start_programming-languages div[class^='language-'] .lang {
+  color: #9d9da6;
+}
+
+.vp-doc._start_programming-languages div[class^='language-'] + p {
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+  line-height: 1.8;
+  margin: -20px 0 10px;
+}
+
+.vp-doc._start_programming-languages div[class^='language-'] + p + p {
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+  margin: 10px 0 34px;
+}
+
+.vp-doc._start_programming-languages div[class^='language-'] + p + p strong {
+  color: var(--vp-c-text-1);
+}
+
+@media (max-width: 959px) {
+  .programming-language-nav-toggle {
+    align-items: center;
+    background: var(--vp-c-bg-soft);
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 9px;
+    color: var(--vp-c-text-1);
+    display: inline-flex;
+    font-size: 14px;
+    font-weight: 600;
+    gap: 8px;
+    margin: 0 0 24px;
+    padding: 8px 12px;
+    position: sticky;
+    top: calc(var(--vp-nav-height) + 10px);
+    z-index: 22;
+  }
+
+  .programming-language-nav {
+    box-shadow: 14px 0 36px rgba(0, 0, 0, 0.16);
+    transform: translateX(-105%);
+    transition: transform 220ms ease;
+    width: min(82vw, 300px);
+    z-index: 42;
+  }
+
+  .programming-language-nav.is-open {
+    transform: translateX(0);
+  }
+
+  .programming-language-nav-backdrop {
+    background: rgba(0, 0, 0, 0.36);
+    border: 0;
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: var(--vp-nav-height);
+    z-index: 41;
+  }
+
+  .vp-doc._start_programming-languages h1 {
+    font-size: 30px;
+  }
+
+  .vp-doc._start_programming-languages
+    h2:is(
+      #typescript,
+      #python,
+      #javascript,
+      #java,
+      #csharp,
+      #php,
+      #bash,
+      #cpp,
+      #go,
+      #c,
+      #rust,
+      #kotlin,
+      #ruby,
+      #swift,
+      #dart
+    ) {
+    font-size: 25px;
+    scroll-margin-top: calc(var(--vp-nav-height) + 70px);
+  }
+}
+
+@media (max-width: 520px) {
+  .vp-doc._start_programming-languages
+    h2:is(
+      #typescript,
+      #python,
+      #javascript,
+      #java,
+      #csharp,
+      #php,
+      #bash,
+      #cpp,
+      #go,
+      #c,
+      #rust,
+      #kotlin,
+      #ruby,
+      #swift,
+      #dart
+    )::before {
+    border-radius: 8px;
+    height: 36px;
+    width: 36px;
+  }
+
+  .vp-doc._start_programming-languages
+    h2:is(
+      #typescript,
+      #python,
+      #javascript,
+      #java,
+      #csharp,
+      #php,
+      #bash,
+      #cpp,
+      #go,
+      #c,
+      #rust,
+      #kotlin,
+      #ruby,
+      #swift,
+      #dart
+    )
+    + blockquote {
+    font-size: 16px;
+    margin-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .programming-language-nav {
+    transition: none;
   }
 }

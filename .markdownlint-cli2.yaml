@@ -12,6 +12,7 @@ config:
       - ElectiveCourseTable
       - HomePage
       - MaterialResourceList
+      - ProgrammingLanguageNav
       - XingshuCampusMap
       - a
       - div
