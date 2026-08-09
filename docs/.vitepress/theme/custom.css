@@ -1404,6 +1404,38 @@
   margin-top: 14px !important;
 }
 
+.scs-qq-group-link {
+  align-items: center;
+  border-radius: 4px;
+  color: var(--scs-active);
+  display: inline-flex;
+  font-weight: 700;
+  gap: 5px;
+  line-height: 1.4;
+  padding: 2px 4px;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+  white-space: nowrap;
+}
+
+.scs-qq-group-link svg {
+  fill: currentcolor;
+  flex: 0 0 auto;
+  height: 1.1em;
+  width: 1.1em;
+}
+
+.scs-qq-group-link:hover {
+  background: var(--scs-home-blue-soft);
+  color: var(--scs-hover);
+}
+
+.scs-qq-group-link:focus-visible {
+  outline: 3px solid var(--vp-c-brand-soft);
+  outline-offset: 2px;
+}
+
 .scs-actions {
   display: flex;
   flex-wrap: wrap;

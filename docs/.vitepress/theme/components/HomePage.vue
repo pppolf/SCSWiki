@@ -26,6 +26,8 @@ type JourneyGroup = {
 
 const repositoryUrl = 'https://github.com/pppolf/SCSWiki';
 const contributorsUrl = `${repositoryUrl}/graphs/contributors`;
+const qqGroupNumber = '1036399266';
+const qqGroupUrl = 'https://qm.qq.com/q/GKen4KYYaC';
 const fallbackContributors: Contributor[] = [
   {
     avatar_url: 'https://github.com/pppolf.png?size=96',
@@ -240,7 +242,21 @@ onMounted(async () => {
             面向西华师范大学计算机学院学生的非官方知识库，把学习经验、资料入口、办事说明和贡献规范整理成可搜索、可审阅、可持续维护的文档。
           </p>
           <p class="scs-hero-support">
-            本站不代表学校或学院立场。涉及政策、流程、时间、人员、联系方式、课程规则或奖助认定的信息，请以学校或学院公开正式通知为准。了解更多请加入QQ群：1036399266。
+            本站不代表学校或学院立场。涉及政策、流程、时间、人员、联系方式、课程规则或奖助认定的信息，请以学校或学院公开正式通知为准。了解更多请加入
+            <a
+              class="scs-qq-group-link"
+              :href="qqGroupUrl"
+              :aria-label="`通过 QQ 加入交流群 ${qqGroupNumber}`"
+              title="点击通过 QQ 加入群"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M21.395 15.035a40 40 0 0 0-.803-2.264l-1.079-2.695c.001-.032.014-.562.014-.836C19.526 4.632 17.351 0 12 0S4.474 4.632 4.474 9.241c0 .274.013.804.014.836l-1.08 2.695a39 39 0 0 0-.802 2.264c-1.021 3.283-.69 4.643-.438 4.673.54.065 2.103-2.472 2.103-2.472 0 1.469.756 3.387 2.394 4.771-.612.188-1.363.479-1.845.835-.434.32-.379.646-.301.778.343.578 5.883.369 7.482.189 1.6.18 7.14.389 7.483-.189.078-.132.132-.458-.301-.778-.483-.356-1.233-.646-1.846-.836 1.637-1.384 2.393-3.302 2.393-4.771 0 0 1.563 2.537 2.103 2.472.251-.03.581-1.39-.438-4.673"
+                />
+              </svg>
+              QQ群：{{ qqGroupNumber }}
+            </a>
+            。
           </p>
           <div class="scs-actions" aria-label="主要入口">
             <button class="scs-button primary" type="button" @click="openSearch">搜索文档</button>
