@@ -994,6 +994,15 @@
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .vp-doc._start_programming-languages table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
 .vp-doc code {
   border-radius: 3px;
 }
