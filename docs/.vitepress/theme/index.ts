@@ -6,6 +6,7 @@ import ContentMeta from './components/ContentMeta.vue';
 import ElectiveCourseTable from './components/ElectiveCourseTable.vue';
 import HomePage from './components/HomePage.vue';
 import MaterialResourceList from './components/MaterialResourceList.vue';
+import ProgrammingLanguageNav from './components/ProgrammingLanguageNav.vue';
 import ScsLayout from './components/ScsLayout.vue';
 import 'katex/dist/katex.min.css';
 import './custom.css';
@@ -19,6 +20,7 @@ export default {
     app.component('ElectiveCourseTable', ElectiveCourseTable);
     app.component('HomePage', HomePage);
     app.component('MaterialResourceList', MaterialResourceList);
+    app.component('ProgrammingLanguageNav', ProgrammingLanguageNav);
     app.component(
       'XingshuCampusMap',
       defineAsyncComponent(() => import('./components/XingshuCampusMap.vue')),
