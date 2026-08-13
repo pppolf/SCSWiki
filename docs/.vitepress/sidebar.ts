@@ -29,6 +29,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: '总览', link: '/study/' },
         { text: 'C语言程序设计', link: '/study/c' },
+        { text: 'C/C++ 入门', link: '/study/cpp-basics' },
         { text: 'Web 前端设计', link: '/study/web-frontend' },
         { text: '网络空间安全导论', link: '/study/cybersecurity-introduction' },
         { text: '计算思维', link: '/study/computational-thinking' },
@@ -48,6 +49,8 @@ export const sidebar: DefaultTheme.Sidebar = {
       text: '开发专题',
       items: [
         { text: '总览', link: '/development/' },
+        { text: 'Git 入门', link: '/development/git-basics' },
+        { text: 'Linux 入门', link: '/development/linux-basics' },
         { text: '传统开发', link: '/development/tradition' },
         { text: 'AI赋能开发', link: '/development/ai' },
         { text: 'Agent开发', link: '/development/agent' },
@@ -157,6 +160,24 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: '奖助学金', link: '/services/scholarship' },
         { text: '保研（推荐免试研究生）', link: '/services/postgraduate' },
         { text: '卓越班', link: '/services/zyb' },
+      ],
+    },
+  ],
+  '/career/': [
+    {
+      text: '升学与就业',
+      items: [
+        { text: '总览', link: '/career/' },
+        { text: '考研通用准备', link: '/career/postgraduate-exam' },
+      ],
+    },
+  ],
+  '/research/': [
+    {
+      text: '科研与实验室',
+      items: [
+        { text: '总览', link: '/research/' },
+        { text: '实验室信息模板', link: '/research/lab-template' },
       ],
     },
   ],
