@@ -20,6 +20,7 @@ sources: []
 ## 课程页面
 
 - [C 语言程序设计](/study/c)
+- [C/C++ 入门](/study/cpp-basics)
 - [Web 前端设计](/study/web-frontend)
 - [网络空间安全导论](/study/cybersecurity-introduction)
 - [计算思维](/study/computational-thinking)
