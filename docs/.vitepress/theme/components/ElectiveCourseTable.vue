@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { withBase } from 'vitepress';
-import electiveData from '../../data/electives-2025-2026-2.json';
+import electiveData from '../../data/electives-2026-2027-1.json';
 
 type Course = {
   number: number;
@@ -9,6 +9,7 @@ type Course = {
   code: string;
   credits: number | string;
   platform: string;
+  platformName: string;
   school: string;
   teacher: string;
   description: string;
@@ -35,6 +36,12 @@ const campusOptions = computed(() => [
 
 const onlineCount = computed(() => courses.filter((course) => course.type === '线上').length);
 const offlineCount = computed(() => courses.filter((course) => course.type === '线下').length);
+const hasCourseUrls = computed(() => courses.some((course) => course.url));
+const downloadUrl = computed(() =>
+  electiveData.localDownloadPath
+    ? withBase(electiveData.localDownloadPath)
+    : electiveData.attachmentUrl,
+);
 
 const filteredCourses = computed(() => {
   const keyword = query.value.trim().toLowerCase();
@@ -46,6 +53,7 @@ const filteredCourses = computed(() => {
       course.name,
       course.code,
       course.platform,
+      course.platformName,
       course.school,
       course.teacher,
       course.campus,
@@ -66,12 +74,19 @@ const filteredCourses = computed(() => {
         <p class="elective-course-panel__kicker">{{ electiveData.term }}</p>
         <h2 id="elective-course-title">通识教育选修课开课信息</h2>
         <p>
-          数据来自教务处通知附件
-          1，本站仅做字段清洗和查询展示；选课、上课时间地点和最终名单以教务系统为准。
+          数据来自<a :href="electiveData.sourceUrl" target="_blank" rel="noreferrer"
+            >教务处选课通知</a
+          >中的附件 1，本站仅做字段清洗和查询展示；实际开课、上课时间地点和最终名单以教务系统为准。
         </p>
+        <p v-if="electiveData.dataNotice">{{ electiveData.dataNotice }}</p>
       </div>
-      <a class="elective-course-panel__download" :href="withBase(electiveData.localDownloadPath)">
-        下载原始 XLSX
+      <a
+        class="elective-course-panel__download"
+        :href="downloadUrl"
+        target="_blank"
+        rel="noreferrer"
+      >
+        从教务处下载 XLSX
       </a>
     </div>
 
@@ -93,7 +108,11 @@ const filteredCourses = computed(() => {
     <div class="elective-course-controls">
       <label>
         <span>搜索</span>
-        <input v-model="query" type="search" placeholder="课程名 / 代码 / 平台 / 学校 / 负责人" />
+        <input
+          v-model="query"
+          type="search"
+          placeholder="课程名 / 代码 / 平台课程名 / 学校 / 负责人"
+        />
       </label>
       <label>
         <span>授课类型</span>
@@ -127,7 +146,7 @@ const filteredCourses = computed(() => {
             <th>平台 / 开课学校</th>
             <th>校区</th>
             <th>课程简介</th>
-            <th>入口</th>
+            <th v-if="hasCourseUrls">入口</th>
           </tr>
         </thead>
         <tbody>
@@ -136,6 +155,11 @@ const filteredCourses = computed(() => {
               <strong>{{ course.name || '（原表未填写）' }}</strong>
               <span v-if="!course.name" class="elective-course-table__muted"
                 >官方附件未填写课程名称</span
+              >
+              <span
+                v-else-if="course.platformName && course.platformName !== course.name"
+                class="elective-course-table__muted"
+                >平台课程：{{ course.platformName }}</span
               >
             </td>
             <td>
@@ -158,7 +182,7 @@ const filteredCourses = computed(() => {
                 <p>{{ course.description || '官方附件未填写课程简介。' }}</p>
               </details>
             </td>
-            <td>
+            <td v-if="hasCourseUrls">
               <a v-if="course.url" :href="course.url" target="_blank" rel="noreferrer">课程页</a>
               <span v-else class="elective-course-table__muted">无线上入口</span>
             </td>
@@ -320,6 +344,7 @@ const filteredCourses = computed(() => {
   font-size: 13px;
   font-weight: 700;
   padding: 2px 9px;
+  white-space: nowrap;
 }
 
 .elective-course-desc summary {
