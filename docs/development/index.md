@@ -23,6 +23,7 @@ sources: []
 - Git 提交、分支和远程仓库概念，见 [Git 入门](/development/git-basics)。
 - 编译器或解释器的安装检查。
 - 错误信息的复制、搜索和归纳。
+- 常用 AI 工具的账号、订阅和使用边界，见 [GPT 订阅与支付经验](/development/gpt-subscription)。
 
 ## 相关页面
 
@@ -30,4 +31,5 @@ sources: []
 - [Linux 入门](/development/linux-basics)：路径、文件、权限、进程和包管理基础。
 - [传统开发](/development/tradition)：待补充。
 - [AI 赋能开发](/development/ai)：待补充。
+- [GPT 订阅与支付经验](/development/gpt-subscription)：Android 场景下的订阅准备与支付经验。
 - [Agent 开发](/development/agent)：待补充。

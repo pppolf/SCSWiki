@@ -53,6 +53,7 @@ export const sidebar: DefaultTheme.Sidebar = {
         { text: 'Linux 入门', link: '/development/linux-basics' },
         { text: '传统开发', link: '/development/tradition' },
         { text: 'AI赋能开发', link: '/development/ai' },
+        { text: 'GPT 订阅与支付经验', link: '/development/gpt-subscription' },
         { text: 'Agent开发', link: '/development/agent' },
       ],
     },
