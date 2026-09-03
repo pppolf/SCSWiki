@@ -8,480 +8,230 @@ content_type: verified
 status: active
 maintainers:
   - SCSWiki 维护组
-sources: []
+sources:
+  - name: GitHub Docs：使用 Fork
+    url: https://docs.github.com/en/pull-requests/how-tos/work-with-forks
+  - name: GitHub Docs：连接到 GitHub
+    url: https://docs.github.com/en/get-started/git-basics/set-up-git
+  - name: GitHub Docs：创建 Pull Request
+    url: https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request
 ---
 
 <ContentMeta />
 
 # 如何贡献
 
-你可以通过 Issue 提交内容错误、过期反馈或新内容建议。熟悉 Git 的贡献者可以 Fork 仓库后提交 Pull Request。
+你可以通过 Issue 提交内容错误、过期反馈或新内容建议，也可以通过 Pull Request（PR）直接完善页面。第一次使用 Git 时，建议先阅读 [Git 入门](/development/git-basics)。
 
-> 下面展示如何提交 Pull Request
+:::: tip 选择合适的方式
 
-## 一、登录Github
+- 只想报告问题、暂时不方便修改：提交 Issue，写清页面地址、问题和可核验来源。
+- 已经准备好修改：Fork 仓库，在独立分支完成改动并创建 PR。
+- 涉及学校政策、费用、时间或个人信息：先确认公开来源和时效，不确定时宁可标记待核验。
 
-Github官网：[官网链接](https://github.com/)
+::::
 
-如果没有账号就注册一个，然后保持你浏览器的Github登录状态。
+## 一、登录 GitHub 并创建 Fork
 
-然后进入项目的首页：[项目链接](https://github.com/pppolf/SCSWiki)，你会看到如下页面
+登录 [GitHub](https://github.com/)，然后进入 [SCSWiki 官方仓库](https://github.com/CWNU-Open-Source-Community/SCSWiki)。
 
-![image-20260627152708303](/images/image-20260627152708303.png)
+点击页面右上角的 **Fork**，再选择 **Create fork**，在自己的 GitHub 账号下创建一份仓库副本。创建完成后请检查：
 
-然后我们点击 **Fork** 把这个代码克隆到本地。
+- 页面顶部的仓库所有者是你的 GitHub 用户名；
+- 页面显示它 Fork 自 `CWNU-Open-Source-Community/SCSWiki`。
 
-点击后直接点击Creat fork
+## 二、安装工具并运行项目
 
-![image-20260627152858372](/images/image-20260627152858372.png)
+### 1. 准备 Git、Node.js 和编辑器
 
-然后会自动跳转到你仓库的页面，现在你看到的就是Fork之后的仓库了。
+本项目需要：
 
-![image-20260627153009391](/images/image-20260627153009391.png)
+- Git，安装和首次设置见 [Git 入门](/development/git-basics)；
+- Node.js `>=20.11.0`，可从 [Node.js 官方下载页](https://nodejs.org/en/download) 安装；
+- 一个文本编辑器，下面以 [VS Code](https://code.visualstudio.com/Download) 为例，也可以使用其他编辑器。
 
-## 二、把项目跑起来
+安装 Node.js 后请重新打开终端；如果使用 VS Code，也请重启 VS Code，再检查版本：
 
-首先需要我们在本地找一个位置来放置我们的项目，然后去clone这个fork项目。
-
-![image-20260627153137419](/images/image-20260627153137419.png)
-
-这里我使用命令行操作，打开终端，cd到你想保存的位置，随后输入
-
-```sh
-git clone https://github.com/你的GitHub用户名/SCSWiki.git
+```bash
+git --version
+node --version
 ```
 
-![image-20260627153516041](/images/image-20260627153516041.png)
+### 2. 克隆自己的 Fork
 
-然后我们使用vscode打开这个项目，这个应该都会吧。！打开之后你会看到如下界面
+先选择一个不属于其他 Git 仓库的目录，用来保存项目。
 
-![image-20260627153742216](/images/image-20260627153742216.png)
+下面命令中的 `YOUR-USERNAME` 必须替换为你的 GitHub 用户名，不能原样复制：
 
-然后我们进行下一步安装依赖，首先你需要保证你有node环境 Node.js `>=20.11.0`，如果不知道怎么安装node，可以问AI安装。。。
-
-打开自带的终端。
-
-![image-20260627153921777](/images/image-20260627153921777.png)
-
-输入 `node -v` 查看当前的node环境，符合条件即可，接下来就是安装依赖了，输入 `npm install -g pnpm` 我们使用pnpm管理依赖，然后输入 `pnpm install` 安装项目依赖，等几分钟就安装完了！
-
-安装完成你会看到
-
-![image-20260627155331302](/images/image-20260627155331302.png)
-
-然后把项目启动起来，运行命令 `npm run dev`，然后打开网址 `http://localhost:5173` 你就会看到这个项目了。
-
-![image-20260627155440890](/images/image-20260627155440890.png)
-
-## 三、配置github信息
-
-回到 vscode 中查看当前分支和修改：
-
-```sh
-git status
+```bash
+git clone https://github.com/YOUR-USERNAME/SCSWiki.git
+cd SCSWiki
 ```
 
-查看远程仓库：
+克隆完成后，使用 VS Code 打开 `SCSWiki` 目录。
 
-```sh
+### 3. 安装依赖
+
+仓库在 `package.json` 中指定 pnpm `9.15.4`。优先通过 Corepack 启用该版本，再安装依赖：
+
+```bash
+corepack enable
+corepack prepare pnpm@9.15.4 --activate
+pnpm --version
+pnpm install
+```
+
+如果终端提示找不到 `corepack`，可以改用下面的固定版本安装方式，然后再运行 `pnpm install`：
+
+```bash
+npm install --global pnpm@9.15.4
+```
+
+两种 pnpm 安装方式选择一种即可。若全局安装提示权限不足，请优先使用 Corepack 或参考 pnpm 官方安装说明，不要切换到 `root` 用户运行项目命令。
+
+### 4. 启动本地预览
+
+```bash
+pnpm dev
+```
+
+打开终端实际显示的本地地址，通常是 `http://localhost:5173`；如果端口被占用，开发服务器会使用其他端口。
+
+开发服务器会持续占用当前终端。预览期间请保持它运行，并在 VS Code 中新建第二个终端执行后续命令；不再需要预览时，可回到该终端按 `Ctrl+C` 停止。
+
+## 三、配置远程仓库并同步主分支
+
+查看当前远程仓库：
+
+```bash
 git remote -v
 ```
 
-正常情况下应该至少有：
+刚克隆自己的 Fork 时，输出通常类似：
 
-```sh
-origin  https://github.com/你的用户名/SCSWiki.git
+```text
+origin  https://github.com/YOUR-USERNAME/SCSWiki.git (fetch)
+origin  https://github.com/YOUR-USERNAME/SCSWiki.git (push)
 ```
 
-其中：
+`origin` 指向你自己的 Fork。再添加官方仓库为 `upstream`，这一步只需执行一次：
 
-- `origin`：你自己的 Fork；
-- `upstream`：原始项目仓库。
-
-如果还没有 `upstream`，添加它：
-
-```sh
-git remote add upstream https://github.com/pppolf/SCSWiki.git
-```
-
-再次确认：
-
-```sh
+```bash
+git remote add upstream https://github.com/CWNU-Open-Source-Community/SCSWiki.git
 git remote -v
 ```
 
-应该类似：
+如果出现 `remote upstream already exists`，不要重复添加，先检查现有地址是否正确。
 
-```sh
-origin    https://github.com/你的用户名/SCSWiki.git (fetch)
-origin    https://github.com/你的用户名/SCSWiki.git (push)
-upstream  https://github.com/pppolf/SCSWiki.git (fetch)
-upstream  https://github.com/pppolf/SCSWiki.git (push)
-```
+### GitHub 认证方式
 
-注意：你通常只向 `origin` 推送，不向 `upstream` 推送。
+同步公开仓库不需要先配置 SSH。向自己的 Fork 推送时，可以使用 HTTPS，也可以自行选择 SSH：
 
-同步原项目的最新代码，在开始修改前，先确保本地代码是最新的。
+- 使用 HTTPS 时，GitHub 不接受账户密码进行 Git 操作。首次推送通常会通过浏览器、Git Credential Manager 或令牌完成认证。
+- 使用 SSH 时，请按照 [GitHub 官方说明](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) 生成并添加密钥，不要用 `sudo` 或切换到 `root` 用户操作。
+- 不要把密码、访问令牌或私钥写进远程地址、源码、截图或聊天记录；共用电脑上不要长期保存凭据。
 
-切换到主分支：
+每次开始新任务前，同步官方 `main`：
 
-```sh
+```bash
 git switch main
-```
-
-从原项目获取最新提交：
-
-```sh
 git fetch upstream
-```
-
-把上游最新代码合并到本地主分支：
-
-```sh
-git merge upstream/main
-```
-
-在同步之前我们要设置SSH才可以，打开终端
-
-以当前 `root` 用户执行：
-
-```sh
-ssh-keygen -t ed25519 -C "你的GitHub邮箱"
-```
-
-出现：
-
-```sh
-Enter file in which to save the key
-```
-
-直接回车，默认保存到：
-
-```sh
-/root/.ssh/id_ed25519
-```
-
-出现密码短语提示时，直接回车两次不设置。看到这个就行了
-
-![image-20260627163744408](/images/image-20260627163744408.png)
-
-查看公钥
-
-```sh
-cat ~/.ssh/id_ed25519.pub
-```
-
-会输出类似：
-
-```sh
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... xxx@xxx.com
-```
-
-复制完整的一整行。进入 GitHub 网页：
-
-```text
-右上角头像
-→ Settings
-→ SSH and GPG keys
-→ New SSH key
-```
-
-填写：
-
-```yml
-Title: SCSWiki
-Key type: Authentication Key
-Key: 粘贴刚才的完整公钥
-```
-
-点击：
-
-```text
-Add SSH key
-```
-
-回到虚拟机测试连接：
-
-```sh
-ssh -T git@github.com
-```
-
-第一次可能出现：
-
-```sh
-Are you sure you want to continue connecting (yes/no/[fingerprint])?
-```
-
-输入：
-
-```sh
-yes
-```
-
-成功时会看到类似：
-
-```sh
-Hi github账号! You've successfully authenticated, but GitHub does not provide shell access.
-```
-
-把仓库地址从 HTTPS 改成 SSH，当前你当前的地址是：
-
-```text
-https://github.com/你的github账号/SCSWiki.git
-```
-
-改为：
-
-```sh
-git remote set-url origin git@github.com:你的github账号/SCSWiki.git
-```
-
-检查：
-
-```sh
-git remote -v
-```
-
-应该显示：
-
-```sh
-origin  git@github.com:你的github账号/SCSWiki.git (fetch)
-origin  git@github.com:你的github账号/SCSWiki.git (push)
-```
-
-然后再次推送：
-
-```sh
+git merge --ff-only upstream/main
 git push origin main
 ```
 
-## 四、为本次修改创建新分支
+`git fetch` 只获取远程状态；`--ff-only` 可以避免同步时意外产生合并提交。若合并失败，先运行 `git status` 查看原因，不要直接强制推送。
 
-不要直接在 `main` 分支修改。
+## 四、创建任务分支并完成修改
 
-例如，你准备添加一篇校园网教程：
+先确认要处理的 Issue、页面错误或内容任务，不要直接把教程中的演示文字提交到仓库。下面假设任务是更新已有的校园网络说明。
 
-```sh
-git switch -c docs/add-campus-network-guide
+创建并检查任务分支：
+
+```bash
+git switch -c docs/update-campus-network
+git branch --show-current
 ```
 
-分支名称建议使用：
+分支名应简短描述本次任务，例如：
 
 ```text
-docs/xxx       文档修改
-fix/xxx        修复错误
-feat/xxx       新功能
-refactor/xxx   重构
-chore/xxx      工程配置
+docs/update-campus-network   文档修改
+fix/broken-campus-link       修复错误
+feat/new-search-filter       新功能
+refactor/sidebar-data        重构
+chore/update-tooling         工程配置
 ```
 
-查看当前分支：
+然后在编辑器中打开本次任务对应的真实文件，按照 Issue 或核验结果修改并保存。本例对应 `docs/campus/network.md`。
 
-```sh
-git branch
-```
+如果要新增页面，还应：
 
-带 `*` 的是当前分支：
+1. 先确认目标目录中没有同名文件或相同 URL；
+2. 参考同目录页面补全 Front Matter、`<ContentMeta />`、来源和核验状态；
+3. 按项目现有结构更新 `docs/.vitepress/sidebar.ts`；
+4. 不编造学校政策，不写入账号、联系方式等个人敏感信息；
+5. 参考仓库根目录的 [内容贡献规范](https://github.com/CWNU-Open-Source-Community/SCSWiki/blob/main/CONTENT_GUIDE.md)。
 
-```sh
-* docs/add-campus-network-guide
-  main
-```
+回到本地预览地址检查页面内容、链接和侧边栏。若示例中约定更新校园网络页，则访问 `/campus/network`。
 
-我们回到vscode，打开目录 `/docs/campus/` 新建一个文件名叫 `network.md` 文档可以写成
+## 五、检查、提交并推送
 
-```markdown
----
-title: 校园网络使用指南
-description: 介绍校园网络的基本使用方法
-category: campus
-audience:
-  - 本科生
-content_type: experience
-status: needs-review
-maintainers:
-  - SCSWiki 维护组
-sources: []
----
+下面仍以“已经修改并保存 `docs/campus/network.md`”为例。其他任务必须把路径和分支名替换为自己的实际内容。
 
-<ContentMeta />
-
-# 校园网络使用指南
-
-> 本页面仍在核验中，请以学校最新通知为准。
-
-## 使用前准备
-
-请先确认已经获得学校统一身份认证账号。
-
-## 注意事项
-
-不要向任何人泄露账号和密码。
-```
-
-请注意，在新添加了某页面，需要在 `/docs/.vitepress/sidebar.ts` 里添加对应的链接。比如现在我们是添加的 `/campus` 下的，所以我们就找对应的区域加，写上 text 和 link 就行了
-
-```ts
-...
-'/campus/': [
-    {
-      text: '校园生活',
-      items: [
-        { text: '总览', link: '/campus/' },
-        { text: '校园网络待核验模板', link: '/campus/network-template' },
-        { text: '校园网络使用指南', link: '/campus/network'},
-      ],
-    },
-  ],
-...
-```
-
-然后我们可以回到浏览器看是否有了，点击链接：`http://localhost:5173/campus/network` 就有了。
-
-最后我们去检查一下语法什么的，运行 `pnpm check` 如果通过了就OK！
-
-## 五、如何提交
-
-查看状态：
-
-```sh
+```bash
 git status
+git diff -- docs/campus/network.md
+pnpm check
+git add docs/campus/network.md
+git diff --staged
+git commit -m "docs: 更新校园网络说明"
+git status
+git push -u origin docs/update-campus-network
 ```
 
-添加到暂存区：
+注意：
 
-```sh
-git add .
-```
+- `pnpm check` 包含类型检查、Markdown 检查、格式检查、内容校验、链接检查、测试和生产构建。
+- `git add` 后应写出本次实际修改的一个或多个文件路径；新增页面时通常还要暂存相应的侧边栏文件。
+- 不把 `git add .` 当作默认操作，避免夹带 `.env`、临时文件、密码或无关改动。
+- `git diff --staged` 展示真正会进入提交的内容，务必逐项检查；若进入分页界面，按 `q` 退出。
+- 一组改动只需执行一次 `git commit`。提交信息可使用中文或英文，重点是简短说明“做了什么”。
 
-检查暂存区内容：
+常见提交类型：
 
-```sh
-git diff --cached
-```
+- `docs:` 文档修改；
+- `fix:` 修复问题；
+- `feat:` 添加功能；
+- `refactor:` 重构；
+- `test:` 测试；
+- `chore:` 工程配置；
+- `style:` 格式调整。
 
-这一步非常重要。它可以避免把 `.env`、临时文件、密码或无关内容提交进去。检查无误按 `q` 退出。
+第一次推送使用 `git push -u origin 分支名`；同一个 PR 后续有新提交时，执行普通的 `git push` 即可。
 
-创建 Commit 提交：
+## 六、创建 Pull Request
 
-```sh
-git commit -m "docs: add campus network guide"
-```
+打开自己的 GitHub Fork。推送成功后，页面通常会显示 **Compare & pull request**，点击后确认：
 
-中文也可以：
-
-```sh
-git commit -m "docs: 添加校园网络使用指南"
-```
-
-推荐格式：
-
-```yml
-类型: 简短描述
-```
-
-常用类型：
-
-```yml
-docs: 文档修改
-fix: 修复问题
-feat: 添加功能
-refactor: 重构
-test: 测试
-chore: 工程配置
-style: 格式调整
-```
-
-示例：
-
-```sh
-git commit -m "docs: add freshman registration guide"
-git commit -m "fix: correct broken link in campus guide"
-git commit -m "feat: add assistant entry component"
-```
-
-提交后查看记录：
-
-```sh
-git log --oneline -5
-```
-
-推送分支到自己的 Fork
-
-第一次推送当前分支：
-
-```sh
-git push -u origin docs/add-campus-network-guide
-```
-
-其中：
-
-```sh
-origin
-```
-
-是你自己的 Fork。
-
-后续再修改并提交后，只需要：
-
-```sh
-git push
-```
-
-如果命令成功，终端一般会提示：
-
-```sh
-Create a pull request for 'docs/add-campus-network-guide'
-```
-
-在 GitHub 创建 **Pull Request**
-
-打开你 Fork 后的 GitHub 仓库页面。
-
-通常会看到一个黄色或绿色提示：
-
-```sh
-Compare & pull request
-```
-
-点击它。
-
-确认以下内容：
-
-```sh
-base repository: 原始项目仓库
+```text
+base repository: CWNU-Open-Source-Community/SCSWiki
 base branch: main
-
 head repository: 你的 Fork
-compare branch: docs/add-campus-network-guide
+compare branch: 本次任务分支
 ```
 
-也就是说：
-
-```sh
-你的分支
-    ↓ 合并到
-原项目 main 分支
-```
-
-PR 标题建议：
-
-```sh
-docs: 添加校园网络使用指南
-```
-
-PR 描述可以使用：
+PR 标题应直接说明改动，例如 `docs: 更新校园网络说明`。描述可以参考：
 
 ```markdown
 ## 修改内容
 
-- 新增校园网络使用指南
-- 添加页面 Front Matter
-- 更新校园生活栏目侧边栏
+- 更新校园网络说明
+- 修正过期内容并补充来源
 
 ## 修改原因
 
-现有 Wiki 缺少校园网络相关说明，新生难以快速找到对应信息。
+说明原页面存在的问题，以及本次修改如何解决。
 
 ## 信息来源
 
@@ -492,79 +242,42 @@ PR 描述可以使用：
 ## 本地检查
 
 - [x] `pnpm check`
-- [x] `pnpm build`
-- [x] 检查移动端页面
-- [x] 未包含个人隐私信息
-- [x] 未包含未经核验的学校政策
+- [x] 检查桌面端和移动端页面
+- [x] 未包含个人隐私或凭据信息
+- [x] 对时效性内容标明来源和核验状态
 
 ## 截图
 
-如涉及页面样式，请附上截图。
+如涉及页面样式，请附上修改前后截图。
 ```
 
-然后点击：
+只勾选自己实际完成的检查，然后点击 **Create pull request**。PR 创建后可在 SCSWiki 交流群通知维护者审核。
 
-```text
-Create pull request
-```
+收到评审意见后，继续在同一分支修改、检查、提交并推送，原 PR 会自动更新，不需要重新创建。
 
-> 👉👉👉**在通过了PR之后再进行以下的操作，现在可以在SCSWiki交流群通知审核了。**
+## 七、PR 合并后同步与清理
 
-## 六、PR 合并后清理分支
+确认 PR 已合并后，回到本地仓库同步主分支：
 
-PR 合并后，先切回主分支：
-
-```sh
+```bash
 git switch main
-```
-
-同步上游最新内容：
-
-```sh
 git fetch upstream
-git merge upstream/main
-```
-
-推送到自己的 Fork：
-
-```sh
+git merge --ff-only upstream/main
 git push origin main
 ```
 
-删除本地分支：
+先尝试删除已经完成的本地任务分支：
 
-```sh
-git branch -d docs/add-campus-network-guide
+```bash
+git branch -d docs/update-campus-network
 ```
 
-删除远程 Fork 上的分支：
+如果 PR 使用 Squash Merge 合并，`git branch -d` 可能因无法确认合并关系而安全拒绝。先在 GitHub 确认 PR 已合并，并核对分支没有需要保留的提交；不确定时先保留分支。
 
-```sh
-git push origin --delete docs/add-campus-network-guide
+确认 PR 已合并且分支内容无需保留后，再删除 Fork 上的远程任务分支：
+
+```bash
+git push origin --delete docs/update-campus-network
 ```
 
-## 七、以后每次提交 PR 的标准命令
-
-每次开始新任务：
-
-```sh
-git switch main
-git fetch upstream
-git merge upstream/main
-git push origin main
-git switch -c docs/your-change
-```
-
-完成修改后：
-
-```sh
-git status
-git diff
-pnpm check
-git add 相关文件
-git diff --cached
-git commit -m "docs: describe your change"
-git push -u origin docs/your-change
-```
-
-然后去 GitHub 创建 PR。
+以后每次贡献都重复“同步 `main` → 创建任务分支 → 修改和预览 → 检查 → 精确暂存 → 提交并推送 → 创建 PR”这个闭环。
