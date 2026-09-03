@@ -20,14 +20,14 @@ sources: []
 ## 建议掌握
 
 - 基本终端命令，见 [Linux 入门](/development/linux-basics)。
-- Git 提交、分支和远程仓库概念，见 [Git 入门](/development/git-basics)。
+- Git 安装、首次配置、安全提交、分支和远程协作，见 [Git 入门](/development/git-basics)。
 - 编译器或解释器的安装检查。
 - 错误信息的复制、搜索和归纳。
 - 常用 AI 工具的账号、订阅和使用边界，见 [GPT 订阅与支付经验](/development/gpt-subscription)。
 
 ## 相关页面
 
-- [Git 入门](/development/git-basics)：最小可用工作流。
+- [Git 入门](/development/git-basics)：安装配置、安全提交、分支协作、撤销恢复与 Pull Request。
 - [Linux 入门](/development/linux-basics)：路径、文件、权限、进程和包管理基础。
 - [传统开发](/development/tradition)：待补充。
 - [AI 赋能开发](/development/ai)：待补充。
