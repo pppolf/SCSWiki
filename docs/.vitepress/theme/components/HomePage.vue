@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { withBase } from 'vitepress';
+import { siteSections } from '../../site-map';
 
 type Contributor = {
   avatar_url: string;
@@ -10,21 +11,12 @@ type Contributor = {
 };
 
 type HomeLink = {
-  badge?: string;
   description: string;
-  featured?: boolean;
   href: string;
-  index?: string;
   title: string;
 };
 
-type JourneyGroup = {
-  description: string;
-  links: Pick<HomeLink, 'href' | 'title'>[];
-  title: string;
-};
-
-const repositoryUrl = 'https://github.com/pppolf/SCSWiki';
+const repositoryUrl = 'https://github.com/CWNU-Open-Source-Community/SCSWiki';
 const contributorsUrl = `${repositoryUrl}/graphs/contributors`;
 const qqGroupNumber = '1036399266';
 const qqGroupUrl = 'https://qm.qq.com/q/GKen4KYYaC';
@@ -38,152 +30,21 @@ const fallbackContributors: Contributor[] = [
 
 const contributors = ref<Contributor[]>(fallbackContributors);
 
-const heroMetrics = [
-  {
-    label: '学校相关内容先看公开正式来源',
-    value: '来源优先',
-  },
-  {
-    label: '不展示个人联系方式、学号和内部链接',
-    value: '隐私边界',
-  },
-  {
-    label: '页面状态、维护者和来源可追踪',
-    value: '可维护',
-  },
-];
-
 const quickLinks: HomeLink[] = [
   {
-    description: '入学准备、信息核验和常见问题',
+    description: '报到准备、缴费资助与新生问答',
     href: '/start/',
-    title: '新生专题',
+    title: '新生报到',
   },
   {
-    description: '期末资料、复习材料与使用边界',
-    href: '/materials/',
-    title: '资料分享',
-  },
-  {
-    description: '内容可信度、隐私和维护规则',
-    href: '/about/trust',
-    title: '可信度说明',
-  },
-];
-
-const journeyGroups: JourneyGroup[] = [
-  {
-    description: '先解决信息核验、入学准备和校园生活的基础问题。',
-    links: [
-      { href: '/start/', title: '新生总览' },
-      { href: '/start/faq', title: '新生常见问题' },
-      { href: '/campus/', title: '校园生活' },
-    ],
-    title: '刚入学',
-  },
-  {
-    description: '围绕课程、基础能力和资料，把学习路线先搭起来。',
-    links: [
-      { href: '/study/', title: '专业学习' },
-      { href: '/course/', title: '课程专题' },
-      { href: '/materials/', title: '课程资料' },
-    ],
-    title: '要学习',
-  },
-  {
-    description: '查竞赛、发展方向、工具入门和长期能力建设。',
-    links: [
-      { href: '/competitions/', title: '学科竞赛' },
-      { href: '/development/', title: '开发入门' },
-      { href: '/career/', title: '发展规划' },
-    ],
-    title: '想拓展',
-  },
-  {
-    description: '发现错误、过期信息或缺少页面时，按维护流程反馈。',
-    links: [
-      { href: '/faq/content-correction', title: '问题反馈' },
-      { href: '/about/contribute', title: '参与贡献' },
-      { href: '/about/privacy-boundary', title: '隐私边界' },
-    ],
-    title: '要修正',
-  },
-];
-
-const contentCards: HomeLink[] = [
-  {
-    badge: '推荐',
-    description: '从信息核验、学习准备和常见问题开始。',
-    featured: true,
-    href: '/start/',
-    index: '01',
-    title: '新生专题',
-  },
-  {
-    description: '沉淀通用学习方法、课程外基础能力和工具入门。',
-    href: '/study/',
-    index: '02',
-    title: '专业学习',
-  },
-  {
-    description: '汇总适合同学参考的竞赛入口、方向和经验。',
-    href: '/competitions/',
-    index: '03',
-    title: '学科竞赛',
-  },
-  {
-    description: '整理学院组织相关介绍，学校特定信息以公开来源为准。',
-    href: '/organization/',
-    index: '04',
-    title: '学院组织',
-  },
-  {
-    description: '入党流程、材料和注意事项，需按正式通知核验。',
-    href: '/party/',
-    index: '05',
-    title: '党建专题',
-  },
-  {
-    description: '课程复习材料的分享入口，并保留版权和适用边界。',
-    href: '/materials/',
-    index: '06',
-    title: '课程资料分享',
-  },
-  {
-    description: '授课相关信息入口，区分公开资料、经验和待核验内容。',
-    href: '/teacher/',
-    index: '07',
-    title: '老师专栏',
-  },
-  {
-    description: '课程建设、选课和公共课等与培养相关的整理。',
+    description: '培养方案、选课与课程建设信息',
     href: '/course/',
-    index: '08',
-    title: '课程专题',
+    title: '培养方案与选课',
   },
   {
-    description: '奖助、升学等办事信息入口，优先链接正式来源。',
-    href: '/services/',
-    index: '09',
-    title: '办事指南',
-  },
-  {
-    description: '网络、生活和校园使用经验的待核验整理。',
-    href: '/campus/',
-    index: '10',
-    title: '校园生活',
-  },
-  {
-    description: '反馈错误、过期内容、缺失资料和来源问题。',
-    href: '/faq/content-correction',
-    index: '11',
-    title: '问题反馈',
-  },
-  {
-    description: '了解项目规则，并通过 Issue 或 Pull Request 参与维护。',
-    href: '/about/contribute',
-    index: '12',
-    title: '参与贡献',
+    description: '课程复习材料与资料使用边界',
+    href: '/materials/',
+    title: '课程资料',
   },
 ];
 
@@ -239,10 +100,10 @@ onMounted(async () => {
           <div class="scs-kicker">非官方 · 学生维护 · 来源优先</div>
           <h1 id="home-title">SCSWiki</h1>
           <p class="scs-hero-lead">
-            面向西华师范大学计算机学院学生的非官方知识库，把学习经验、资料入口、办事说明和贡献规范整理成可搜索、可审阅、可持续维护的文档。
+            西华师范大学计算机学院学生维护的非官方知识库，按六类快速查资料、办事务。
           </p>
           <p class="scs-hero-support">
-            本站不代表学校或学院立场。涉及政策、流程、时间、人员、联系方式、课程规则或奖助认定的信息，请以学校或学院公开正式通知为准。了解更多请加入
+            政策与流程请以学校或学院公开通知为准。交流与反馈：
             <a
               class="scs-qq-group-link"
               :href="qqGroupUrl"
@@ -261,7 +122,6 @@ onMounted(async () => {
           <div class="scs-actions" aria-label="主要入口">
             <button class="scs-button primary" type="button" @click="openSearch">搜索文档</button>
             <a class="scs-button secondary" :href="withBase('/start/')">新生入口</a>
-            <a class="scs-button ghost" :href="withBase('/about/trust')">可信度说明</a>
           </div>
         </div>
 
@@ -286,55 +146,40 @@ onMounted(async () => {
       </div>
     </section>
 
-    <section class="scs-metrics" aria-label="站点维护原则">
-      <div v-for="metric in heroMetrics" :key="metric.value">
-        <strong>{{ metric.value }}</strong>
-        <span>{{ metric.label }}</span>
-      </div>
-    </section>
-
-    <section class="scs-section scs-section--journey" aria-labelledby="journey-title">
-      <div class="scs-section-heading">
-        <span>Find by Situation</span>
-        <h2 id="journey-title">按当前问题找入口</h2>
-      </div>
-
-      <div class="scs-journey-grid">
-        <section v-for="group in journeyGroups" :key="group.title" class="scs-journey">
-          <div>
-            <strong>{{ group.title }}</strong>
-            <p>{{ group.description }}</p>
-          </div>
-          <div class="scs-journey-links">
-            <a v-for="link in group.links" :key="link.href" :href="withBase(link.href)">
-              {{ link.title }}
-            </a>
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <section class="scs-section" aria-labelledby="content-title">
-      <div class="scs-section-heading">
-        <span>Knowledge Map</span>
-        <h2 id="content-title">常用内容入口</h2>
+    <section
+      id="site-map"
+      class="scs-section scs-section--site-map"
+      aria-labelledby="content-title"
+    >
+      <div class="scs-section-heading scs-section-heading--split">
+        <div>
+          <span>Explore SCSWiki</span>
+          <h2 id="content-title">先选一类，再找具体内容</h2>
+        </div>
+        <p>常用内容都归入以下六类；也可以用顶部搜索直接定位页面。</p>
       </div>
 
-      <div class="scs-grid" aria-label="内容分类">
-        <a
-          v-for="card in contentCards"
-          :key="card.href"
+      <div class="scs-grid" aria-label="六类内容入口">
+        <article
+          v-for="section in siteSections"
+          :key="section.primaryHref"
           class="scs-card"
-          :class="{ featured: card.featured }"
-          :href="withBase(card.href)"
+          :class="{ featured: section.index === '01' }"
         >
           <span class="scs-card-topline">
-            <span class="scs-card-index">{{ card.index }}</span>
-            <span v-if="card.badge" class="scs-card-badge">{{ card.badge }}</span>
+            <span class="scs-card-index" aria-hidden="true">{{ section.index }}</span>
           </span>
-          <strong>{{ card.title }}</strong>
-          <span>{{ card.description }}</span>
-        </a>
+          <a class="scs-card-heading" :href="withBase(section.primaryHref)">
+            <strong>{{ section.title }}</strong>
+            <span class="scs-card-arrow" aria-hidden="true">→</span>
+          </a>
+          <p class="scs-card-description">{{ section.description }}</p>
+          <nav class="scs-card-links" :aria-label="`${section.title}子栏目`">
+            <a v-for="link in section.links" :key="link.href" :href="withBase(link.href)">
+              {{ link.title }}
+            </a>
+          </nav>
+        </article>
       </div>
     </section>
 
