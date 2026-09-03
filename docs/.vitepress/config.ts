@@ -77,7 +77,7 @@ export default defineConfig({
       },
     },
     editLink: {
-      pattern: 'https://github.com/pppolf/SCSWiki/edit/main/docs/:path',
+      pattern: 'https://github.com/CWNU-Open-Source-Community/SCSWiki/edit/main/docs/:path',
       text: '在 GitHub 上编辑此页',
     },
     footer: {
